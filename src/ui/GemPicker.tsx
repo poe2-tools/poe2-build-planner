@@ -6,7 +6,7 @@ import type { GemColor, GemType } from '../gems';
 import { GemIcon } from '../icons';
 
 const overlay: CSSProperties = {
-  position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.72)', backdropFilter: 'blur(2px)',
+  position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.78)',
   display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 10,
 };
 const modal: CSSProperties = {

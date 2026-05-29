@@ -21,7 +21,7 @@ const editBtn: CSSProperties = { alignSelf: 'flex-start', fontSize: 11, padding:
 const placeholderStyle: CSSProperties = { color: 'var(--text-dim)', fontStyle: 'italic' };
 
 const backdrop: CSSProperties = {
-  position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.62)', backdropFilter: 'blur(2px)', zIndex: 200,
+  position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.7)', zIndex: 200,
   display: 'flex', alignItems: 'center', justifyContent: 'center',
 };
 const modal: CSSProperties = {

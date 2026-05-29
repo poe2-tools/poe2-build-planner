@@ -84,26 +84,16 @@ body {
 body {
   font-family: var(--font-body);
   color: var(--text);
-  /* Atmosphere: a warm altar-glow from above, cool depth below, vignetted edges. */
+  /* Atmosphere: a warm altar-glow from above, cool depth below, vignetted edges.
+     Static gradients only — painted once, no per-frame compositing cost. (A
+     mix-blend-mode grain overlay lived here but pegged the GPU by re-blending the
+     whole screen over the animating tree canvas every frame, so it was removed.) */
   background-image:
     radial-gradient(135% 105% at 50% 48%, transparent 48%, rgba(0, 0, 0, 0.62) 100%),
     radial-gradient(120% 75% at 50% -12%, rgba(140, 96, 44, 0.13), transparent 58%),
     radial-gradient(120% 90% at 50% 118%, rgba(36, 28, 58, 0.12), transparent 60%);
-  background-attachment: fixed;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
-}
-
-/* Filmic grain over the whole app — faint, never interactive. */
-body::after {
-  content: '';
-  position: fixed;
-  inset: 0;
-  z-index: 9999;
-  pointer-events: none;
-  opacity: 0.05;
-  mix-blend-mode: overlay;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
 ::selection {
