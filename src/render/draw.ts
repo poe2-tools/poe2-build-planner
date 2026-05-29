@@ -11,12 +11,13 @@ import type { SpatialIndex } from './spatialIndex';
 import { edgeGeometry } from './arc';
 import type { AscendancyLayout } from './ascendancy';
 
-const BG = '#0c0d12';
-const EDGE_DIM = 'rgba(120,120,140,0.22)';
-const EDGE_ON = 'rgba(196,170,86,0.9)'; // shared / untagged — gold
-const EDGE_SET1 = 'rgba(214,90,90,0.9)'; // weapon set 1 — red
-const EDGE_SET2 = 'rgba(110,200,110,0.9)'; // weapon set 2 — green
-const DOT_COLOR = { allocated: '#d9c25a', canAllocate: '#7a7f9a', unallocated: '#4a4d5e' } as const;
+// Concrete hex kept in sync by hand with the CSS palette in src/index.css.
+const BG = '#0a0806'; // --void
+const EDGE_DIM = 'rgba(122,108,78,0.20)';
+const EDGE_ON = 'rgba(200,168,106,0.92)'; // shared / untagged — gold (--gold)
+const EDGE_SET1 = 'rgba(215,96,80,0.92)'; // weapon set 1 — blood (--blood-lit)
+const EDGE_SET2 = 'rgba(90,168,90,0.92)'; // weapon set 2 — jade (--jade)
+const DOT_COLOR = { allocated: '#ecd49a', canAllocate: '#8a7d5a', unallocated: '#3c3424' } as const;
 
 /** Colour an allocated edge by the weapon-set tag of either endpoint (the path "going to" a set). */
 function edgeColor(weaponSets: Map<number, number> | undefined, a: number, b: number): string {
@@ -109,7 +110,7 @@ export function drawTree(ctx: CanvasRenderingContext2D, p: DrawParams): void {
 
     // Class-start nodes: a small neutral dot, no icon and no border frame.
     if (kind === 'classStart') {
-      ctx.fillStyle = '#6a6e82';
+      ctx.fillStyle = '#7a6e4e';
       ctx.beginPath();
       ctx.arc(s.sx, s.sy, Math.max(2, r * 0.35), 0, Math.PI * 2);
       ctx.fill();

@@ -8,15 +8,23 @@ import RangeBar from './RangeBar';
 import IntervalInputs from './IntervalInputs';
 import MarkupField from './MarkupField';
 
-const card: CSSProperties = {
-  background: '#e8e9ee', color: '#1b1d24', border: '1px solid #c4c7d2', borderRadius: 6, padding: 8,
-  display: 'flex', flexDirection: 'column', gap: 6,
+const card: CSSProperties = { padding: 11, display: 'flex', flexDirection: 'column', gap: 8 };
+const wrap: CSSProperties = { maxWidth: 1100, margin: '0 auto', padding: 24 };
+const title: CSSProperties = {
+  margin: '0 0 14px', fontSize: 22, letterSpacing: '0.12em', textTransform: 'uppercase',
 };
-const wrap: CSSProperties = { maxWidth: 1100, margin: '0 auto', padding: 16 };
 const grid: CSSProperties = {
-  display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: 12, marginTop: 8,
+  display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: 14, marginTop: 8,
 };
 const gemRow: CSSProperties = { display: 'flex', alignItems: 'center', gap: 8 };
+const skillName: CSSProperties = {
+  flex: 1, fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: 15,
+  color: 'var(--gold-bright)', letterSpacing: '0.02em',
+};
+const supportBlock: CSSProperties = {
+  display: 'flex', flexDirection: 'column', gap: 4, paddingLeft: 10, marginLeft: 3,
+  borderLeft: '1px solid var(--line)',
+};
 
 type Picker = { kind: 'skill' } | { kind: 'support'; setupIndex: number } | null;
 
@@ -39,15 +47,16 @@ export default function SkillsPanel() {
 
   return (
     <div style={wrap}>
+      <h2 style={title}>Skill Gems</h2>
       <RangeBar domain="skills" />
       <div style={grid}>
         {skills.map((setup, i) => {
           const mainIcon = iconOf(setup.id);
           return (
-            <div key={i} style={card}>
+            <div key={i} className="card" style={card}>
               <div style={gemRow}>
                 {mainIcon && <GemIcon iconDdsFile={mainIcon} size={28} />}
-                <strong style={{ flex: 1 }}>{nameOf(setup.id)}</strong>
+                <strong style={skillName}>{nameOf(setup.id)}</strong>
                 <button onClick={() => moveSkillSetup(i, -1)} disabled={i === 0} title="Move up">↑</button>
                 <button onClick={() => moveSkillSetup(i, 1)} disabled={i === skills.length - 1} title="Move down">↓</button>
                 <button onClick={() => removeSkillSetup(i)}>Remove</button>
@@ -61,10 +70,10 @@ export default function SkillsPanel() {
               {(setup.support_skills ?? []).map((sup, j) => {
                 const supIcon = iconOf(sup.id);
                 return (
-                  <div key={j} style={{ display: 'flex', flexDirection: 'column', gap: 4, paddingLeft: 16 }}>
+                  <div key={j} style={supportBlock}>
                     <div style={gemRow}>
                       {supIcon && <GemIcon iconDdsFile={supIcon} size={22} />}
-                      <span style={{ flex: 1 }}>{nameOf(sup.id)}</span>
+                      <span style={{ flex: 1, color: 'var(--text)' }}>{nameOf(sup.id)}</span>
                       <IntervalInputs value={sup.level_interval} onChange={(iv) => setSupportInterval(i, j, iv)} />
                       <button onClick={() => removeSupport(i, j)}>✕</button>
                     </div>

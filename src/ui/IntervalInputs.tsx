@@ -14,8 +14,8 @@ export default function IntervalInputs({ value, onChange }: Props) {
     else onChange([f ?? 1, t ?? 100]);
   };
   return (
-    <span style={{ display: 'inline-flex', gap: 4, alignItems: 'center', fontSize: 12 }}>
-      <span style={{ opacity: 0.7 }}>lvl</span>
+    <span style={{ display: 'inline-flex', gap: 4, alignItems: 'center', fontSize: 12, color: 'var(--text-muted)' }}>
+      <span style={{ fontFamily: 'var(--font-display)', fontSize: 10, letterSpacing: '0.1em', textTransform: 'uppercase' }}>lvl</span>
       <input
         type="number"
         min={1}
@@ -23,7 +23,7 @@ export default function IntervalInputs({ value, onChange }: Props) {
         value={from ?? ''}
         placeholder="1"
         onChange={(e) => set(num(e.target.value), to)}
-        style={{ width: 44 }}
+        style={{ width: 52, padding: '4px 5px' }}
       />
       <span>–</span>
       <input
@@ -33,7 +33,7 @@ export default function IntervalInputs({ value, onChange }: Props) {
         value={to ?? ''}
         placeholder="100"
         onChange={(e) => set(from, num(e.target.value))}
-        style={{ width: 44 }}
+        style={{ width: 52, padding: '4px 5px' }}
       />
     </span>
   );

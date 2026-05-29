@@ -14,9 +14,14 @@ import BuildScreen from './ui/BuildScreen';
 const screenWrap: CSSProperties = { position: 'absolute', inset: 0, overflowY: 'auto' };
 // GGG's developer policy requires apps to display the non-affiliation notice.
 const footer: CSSProperties = {
-  flexShrink: 0, padding: '3px 12px', textAlign: 'center',
-  background: 'rgba(20,22,30,0.96)', borderTop: '1px solid #2a2d3a',
-  color: '#6b7080', font: '11px sans-serif',
+  flexShrink: 0, padding: '4px 14px', textAlign: 'center',
+  background: 'rgba(16,12,7,0.92)', borderTop: '1px solid var(--bronze)',
+  color: 'var(--text-dim)', fontFamily: 'var(--font-body)', fontSize: 11, letterSpacing: '0.02em',
+};
+const splash: CSSProperties = {
+  position: 'fixed', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center',
+  flexDirection: 'column', gap: 10, fontFamily: 'var(--font-display)', letterSpacing: '0.22em',
+  textTransform: 'uppercase', fontSize: 15,
 };
 
 export default function App() {
@@ -50,11 +55,17 @@ export default function App() {
     };
   }, [setTree, setGems]);
 
-  if (error) return <div style={{ color: '#f88', padding: 16 }}>Failed to load data: {error}</div>;
-  if (!tree || !atlases) return <div style={{ color: '#ccc', padding: 16 }}>Loading…</div>;
+  if (error)
+    return (
+      <div style={{ ...splash, color: 'var(--blood-lit)' }}>
+        <div>Failed to load data</div>
+        <div style={{ fontFamily: 'var(--font-body)', fontSize: 12, letterSpacing: 0, textTransform: 'none', color: 'var(--text-muted)', maxWidth: 480, textAlign: 'center' }}>{error}</div>
+      </div>
+    );
+  if (!tree || !atlases) return <div style={{ ...splash, color: 'var(--gold)' }}>Loading…</div>;
 
   return (
-    <div style={{ position: 'fixed', inset: 0, background: '#0c0d12', display: 'flex', flexDirection: 'column' }}>
+    <div style={{ position: 'fixed', inset: 0, background: 'transparent', display: 'flex', flexDirection: 'column' }}>
       <AppHeader active={screen} onSelect={setScreen} />
       <main style={{ position: 'relative', flex: 1, overflow: 'hidden' }}>
         {/* Tree stays mounted (display toggle) so pan/zoom survives tab switches. */}

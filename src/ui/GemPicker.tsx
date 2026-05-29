@@ -6,24 +6,27 @@ import type { GemColor, GemType } from '../gems';
 import { GemIcon } from '../icons';
 
 const overlay: CSSProperties = {
-  position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.5)',
+  position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.72)', backdropFilter: 'blur(2px)',
   display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 10,
 };
 const modal: CSSProperties = {
   width: 420, maxHeight: '70vh', display: 'flex', flexDirection: 'column',
-  background: '#1a1c24', color: '#ddd', borderRadius: 8, padding: 12, font: '13px sans-serif',
+  background: 'linear-gradient(180deg, #241c10, #120d07)',
+  border: '1px solid var(--bronze)', borderTopColor: 'var(--bronze-lit)', borderRadius: 5,
+  padding: 14, color: 'var(--text)', fontFamily: 'var(--font-body)', fontSize: 13,
+  boxShadow: 'var(--shadow)',
 };
 const row: CSSProperties = {
   display: 'flex', alignItems: 'center', gap: 8, width: '100%',
-  padding: '4px 6px', background: 'none', border: 'none', color: '#ddd',
-  textAlign: 'left', cursor: 'pointer',
+  padding: '5px 7px', textAlign: 'left', cursor: 'pointer',
 };
 
-const COLORS: { key: GemColor; label: string }[] = [
-  { key: 'r', label: 'R' },
-  { key: 'g', label: 'G' },
-  { key: 'b', label: 'B' },
-  { key: 'w', label: 'W' },
+// R/G/B/W filter swatches, tinted to the gem socket colours.
+const COLORS: { key: GemColor; label: string; hex: string }[] = [
+  { key: 'r', label: 'R', hex: '#c8503e' },
+  { key: 'g', label: 'G', hex: '#5aa85a' },
+  { key: 'b', label: 'B', hex: '#5683c0' },
+  { key: 'w', label: 'W', hex: '#d8cba0' },
 ];
 
 interface Props {
@@ -52,21 +55,31 @@ export default function GemPicker({ role, onPick, onClose }: Props) {
             onChange={(e) => setQuery(e.target.value)}
             style={{ flex: 1 }}
           />
-          {COLORS.map((c) => (
-            <button
-              key={c.key}
-              onClick={() => setColor(color === c.key ? undefined : c.key)}
-              style={{ fontWeight: color === c.key ? 'bold' : 'normal' }}
-            >
-              {c.label}
-            </button>
-          ))}
+          {COLORS.map((c) => {
+            const on = color === c.key;
+            return (
+              <button
+                key={c.key}
+                onClick={() => setColor(on ? undefined : c.key)}
+                style={{
+                  minWidth: 30,
+                  color: on ? c.hex : 'var(--text-muted)',
+                  borderColor: on ? c.hex : 'var(--line)',
+                  fontWeight: on ? 700 : 600,
+                  boxShadow: on ? `0 0 8px ${c.hex}` : undefined,
+                }}
+              >
+                {c.label}
+              </button>
+            );
+          })}
           <button onClick={onClose}>✕</button>
         </div>
         <div style={{ overflowY: 'auto', flex: 1 }}>
           {results.map((g) => (
             <button
               key={g.id}
+              className="gem-row"
               onClick={() => {
                 onPick(g.id);
                 onClose();

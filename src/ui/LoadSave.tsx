@@ -3,7 +3,8 @@ import { useStore } from '../state';
 import { parseBuild } from '../buildfile';
 
 const panel: CSSProperties = {
-  display: 'flex', gap: 8, alignItems: 'center', font: '13px sans-serif', color: '#ddd',
+  display: 'flex', gap: 8, alignItems: 'center', fontFamily: 'var(--font-body)', fontSize: 13,
+  color: 'var(--text)',
 };
 
 export default function LoadSave() {
@@ -30,11 +31,11 @@ export default function LoadSave() {
 
   return (
     <div style={panel}>
-      <label style={{ cursor: 'pointer' }}>
-        Load .build
+      <label className="btn-label">
+        Load
         <input type="file" accept=".build,application/json" onChange={onFile} style={{ display: 'none' }} />
       </label>
-      <button onClick={onSave}>Save .build</button>
+      <button className="btn-primary" onClick={onSave}>Save</button>
     </div>
   );
 }

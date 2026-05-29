@@ -15,18 +15,23 @@ const GROUPS: [string, string[]][] = [
 // Display-only: 'BodyArmour' -> 'Body Armour', 'Weapon1' -> 'Weapon 1'. Stored inventory_id is unchanged.
 const prettySlot = (slot: string) => slot.replace(/([a-z])([A-Z0-9])/g, '$1 $2');
 
-const wrap: CSSProperties = { maxWidth: 1100, margin: '0 auto', padding: 16 };
+const wrap: CSSProperties = { maxWidth: 1100, margin: '0 auto', padding: 24 };
+const title: CSSProperties = {
+  margin: '0 0 14px', fontSize: 22, letterSpacing: '0.12em', textTransform: 'uppercase',
+};
 const grid: CSSProperties = {
-  display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 16, marginTop: 8,
+  display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 18, marginTop: 8,
 };
 const colHead: CSSProperties = {
-  fontSize: 11, textTransform: 'uppercase', letterSpacing: '0.6px', color: '#7f8598', margin: '0 0 6px',
+  fontFamily: 'var(--font-display)', fontSize: 12, fontWeight: 700, textTransform: 'uppercase',
+  letterSpacing: '0.14em', color: 'var(--gold)', margin: '0 0 8px', paddingBottom: 6,
+  borderBottom: '1px solid var(--line)',
 };
 
 const card: CSSProperties = {
-  background: '#e8e9ee', color: '#1b1d24', border: '1px solid #c4c7d2', borderRadius: 6, padding: 8, marginBottom: 8,
-  display: 'flex', flexDirection: 'column', gap: 4,
+  padding: 9, marginBottom: 8, display: 'flex', flexDirection: 'column', gap: 5,
 };
+const slotName: CSSProperties = { flex: 1, color: 'var(--gold-bright)', letterSpacing: '0.02em' };
 
 export default function ItemsPanel() {
   const itemRanges = useStore((s) => s.itemRanges);
@@ -38,6 +43,7 @@ export default function ItemsPanel() {
 
   return (
     <div style={wrap}>
+      <h2 style={title}>Equipment</h2>
       <RangeBar domain="items" />
       <div style={grid}>
         {GROUPS.map(([title, slots]) => (
@@ -48,9 +54,9 @@ export default function ItemsPanel() {
               const onText = (v: string) => setItem(slot, { additionalText: v, uniqueName: item?.unique_name });
               const onUnique = (v: string) => setItem(slot, { additionalText: item?.additional_text, uniqueName: v });
               return (
-                <div key={slot} style={card}>
+                <div key={slot} className="card" style={card}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                    <strong style={{ flex: 1 }}>{prettySlot(slot)}</strong>
+                    <strong style={slotName}>{prettySlot(slot)}</strong>
                     {item && <button onClick={() => clearItem(slot)}>Clear</button>}
                   </div>
                   <input

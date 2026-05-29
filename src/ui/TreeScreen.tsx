@@ -12,8 +12,8 @@ const EMPTY: Set<number> = new Set();
 const EMPTY_ENTRIES: Map<number, Passive> = new Map();
 const passiveBar: CSSProperties = {
   // top-center of the tree area (below the header); clear of Overlays (top-left)
-  position: 'absolute', top: 8, left: '50%', transform: 'translateX(-50%)', width: 320,
-  background: 'rgba(20,22,30,0.92)', color: '#ddd', borderRadius: 6, padding: 4, font: '13px sans-serif',
+  position: 'absolute', top: 12, left: '50%', transform: 'translateX(-50%)', width: 340,
+  color: 'var(--text)', padding: 8, fontFamily: 'var(--font-body)', fontSize: 13,
 };
 
 interface Props {
@@ -52,7 +52,7 @@ export default function TreeScreen({ skills, frames }: Props) {
         ascendancyId={ascendancyId}
         onNodeClick={clickNode}
       />
-      <div style={passiveBar}>
+      <div className="panel" style={passiveBar}>
         <RangeBar domain="passives" />
         <WeaponSetToggle />
       </div>

@@ -5,7 +5,8 @@ import IntervalInputs from './IntervalInputs';
 
 const bar: CSSProperties = {
   display: 'flex', alignItems: 'center', gap: 6, flexWrap: 'wrap',
-  padding: 6, marginBottom: 8, background: 'rgba(255,255,255,0.04)', borderRadius: 6,
+  padding: 6, marginBottom: 8, background: 'rgba(12,10,6,0.55)',
+  border: '1px solid var(--line)', borderRadius: 4,
 };
 
 interface Props {

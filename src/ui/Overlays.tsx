@@ -5,10 +5,17 @@ import { pointsUsed } from '../tree';
 const EMPTY: Set<number> = new Set();
 
 const panel: CSSProperties = {
-  position: 'absolute', top: 8, left: 8, padding: '8px 12px',
-  background: 'rgba(20,22,30,0.85)', color: '#ddd', borderRadius: 6,
-  display: 'flex', flexDirection: 'column', gap: 6, font: '13px sans-serif',
+  position: 'absolute', top: 12, left: 12, padding: '10px 14px',
+  color: 'var(--text)', display: 'flex', flexDirection: 'column', gap: 7,
+  fontFamily: 'var(--font-body)', fontSize: 13, minWidth: 188,
 };
+const labelRow: CSSProperties = { display: 'flex', flexDirection: 'column', gap: 3 };
+const labelText: CSSProperties = {
+  fontFamily: 'var(--font-display)', fontSize: 10, letterSpacing: '0.14em',
+  textTransform: 'uppercase', color: 'var(--text-muted)',
+};
+const stat: CSSProperties = { display: 'flex', justifyContent: 'space-between', gap: 12 };
+const statVal: CSSProperties = { color: 'var(--gold-bright)', fontWeight: 600, fontVariantNumeric: 'tabular-nums' };
 
 export default function Overlays() {
   const tree = useStore((s) => s.tree);
@@ -23,9 +30,9 @@ export default function Overlays() {
   const ascendancies = classIndex >= 0 ? tree.classes[classIndex].ascendancies : [];
 
   return (
-    <div style={panel}>
-      <label>
-        Class{' '}
+    <div className="panel" style={panel}>
+      <label style={labelRow}>
+        <span style={labelText}>Class</span>
         <select value={classIndex} onChange={(e) => setClass(Number(e.target.value))}>
           <option value={-1} disabled>Select…</option>
           {tree.classes
@@ -36,8 +43,8 @@ export default function Overlays() {
             ))}
         </select>
       </label>
-      <label>
-        Ascendancy{' '}
+      <label style={labelRow}>
+        <span style={labelText}>Ascendancy</span>
         <select
           value={ascendancy ?? ''}
           onChange={(e) => setAscendancy(e.target.value)}
@@ -49,8 +56,9 @@ export default function Overlays() {
           ))}
         </select>
       </label>
-      <div>Passive points: {totals.main}</div>
-      <div>Ascendancy points: {totals.ascendancy}</div>
+      <hr className="gilt-rule" style={{ margin: '2px 0' }} />
+      <div style={stat}><span style={labelText}>Passive</span><span style={statVal}>{totals.main}</span></div>
+      <div style={stat}><span style={labelText}>Ascendancy</span><span style={statVal}>{totals.ascendancy}</span></div>
     </div>
   );
 }

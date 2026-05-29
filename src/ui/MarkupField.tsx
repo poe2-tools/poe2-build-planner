@@ -13,27 +13,28 @@ interface Props {
 
 const row: CSSProperties = { display: 'flex', alignItems: 'stretch', gap: 6 };
 const box: CSSProperties = {
-  flex: 1, minHeight: 34, maxHeight: 120, overflow: 'auto', padding: '4px 6px', cursor: 'text',
-  background: '#fbfbfd', color: '#1b1d24', border: '1px solid #c4c7d2', borderRadius: 4,
-  font: '12px sans-serif', whiteSpace: 'pre-wrap', wordBreak: 'break-word',
+  flex: 1, minHeight: 34, maxHeight: 120, overflow: 'auto', padding: '5px 7px', cursor: 'text',
+  background: 'var(--field)', color: 'var(--text)', border: '1px solid var(--line)', borderRadius: 3,
+  fontFamily: 'var(--font-body)', fontSize: 12, whiteSpace: 'pre-wrap', wordBreak: 'break-word',
 };
-const editBtn: CSSProperties = {
-  alignSelf: 'flex-start', font: '11px sans-serif', padding: '3px 8px', cursor: 'pointer',
-  background: '#f4f5f8', color: '#1b1d24', border: '1px solid #c4c7d2', borderRadius: 4,
-};
-const placeholderStyle: CSSProperties = { color: '#9aa0b4' };
+const editBtn: CSSProperties = { alignSelf: 'flex-start', fontSize: 11, padding: '4px 9px' };
+const placeholderStyle: CSSProperties = { color: 'var(--text-dim)', fontStyle: 'italic' };
 
 const backdrop: CSSProperties = {
-  position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.5)', zIndex: 200,
+  position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.62)', backdropFilter: 'blur(2px)', zIndex: 200,
   display: 'flex', alignItems: 'center', justifyContent: 'center',
 };
 const modal: CSSProperties = {
   width: 'min(520px, 92vw)', maxHeight: '85vh', overflow: 'auto',
-  background: '#e8e9ee', color: '#1b1d24', border: '1px solid #c4c7d2', borderRadius: 8,
-  padding: 14, display: 'flex', flexDirection: 'column', gap: 10,
-  boxShadow: '0 8px 32px rgba(0,0,0,0.5)',
+  background: 'linear-gradient(180deg, #241c10, #120d07)', color: 'var(--text)',
+  border: '1px solid var(--bronze)', borderTopColor: 'var(--bronze-lit)', borderRadius: 5,
+  padding: 16, display: 'flex', flexDirection: 'column', gap: 10,
+  boxShadow: 'var(--shadow)',
 };
 const head: CSSProperties = { display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 8 };
+const headTitle: CSSProperties = {
+  fontFamily: 'var(--font-display)', fontSize: 14, fontWeight: 700, color: 'var(--gold)', letterSpacing: '0.04em',
+};
 
 export default function MarkupField({ value, onChange, placeholder, title }: Props) {
   const [open, setOpen] = useState(false);
@@ -60,7 +61,7 @@ export default function MarkupField({ value, onChange, placeholder, title }: Pro
         <div style={backdrop} onClick={() => setOpen(false)}>
           <div style={modal} onClick={(e) => e.stopPropagation()}>
             <div style={head}>
-              <strong>{title ?? 'Edit note'}</strong>
+              <strong style={headTitle}>{title ?? 'Edit note'}</strong>
               <button type="button" onClick={() => setOpen(false)}>Done</button>
             </div>
             <MarkupEditor value={value} onChange={onChange} minRows={6} placeholder={placeholder} />

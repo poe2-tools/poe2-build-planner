@@ -1,0 +1,317 @@
+/* ===========================================================================
+   PoE 2 Build Planner — "Grimdark Gilded" theme.
+   Warm near-black stone, antique-gold filigree, parchment text. The palette
+   lives here as CSS custom properties; React components reference them via
+   `var(--name)` so this file is the single source of truth. (Canvas drawing in
+   src/render/draw.ts keeps concrete hex constants kept in sync by hand.)
+   Fonts are vendored locally (src/fonts/*.woff2) — no runtime/CDN dependency.
+   =========================================================================== */
+
+/* Cinzel ships as a single variable woff2 covering the weight axis. */
+@font-face {
+  font-family: 'Cinzel';
+  font-style: normal;
+  font-weight: 400 800;
+  font-display: swap;
+  src: url('./fonts/cinzel.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Spectral';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('./fonts/spectral-400.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Spectral';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('./fonts/spectral-600.woff2') format('woff2');
+}
+
+:root {
+  /* Surfaces */
+  --void: #0a0806;
+  --bg: #110d08;
+  --panel: #1a140c;
+  --panel-top: #261d11;
+  --panel-bot: #140f08;
+  --field: #0c0a06;
+  --raised: #221a0f;
+
+  /* Lines & metal */
+  --line: #2a2114;
+  --bronze: #5f4d2b;
+  --bronze-lit: #856838;
+
+  /* Gold accents */
+  --gold: #c8a86a;
+  --gold-bright: #ecd49a;
+  --gold-deep: #8a6d38;
+
+  /* Text — parchment / bone */
+  --text: #c4b896;
+  --text-bright: #efe6cf;
+  --text-muted: #8c7f63;
+  --text-dim: #6a5e46;
+
+  /* Semantic */
+  --blood: #b23b2e;
+  --blood-lit: #d76050;
+  --jade: #5aa85a;
+  --azure: #5683c0;
+
+  --shadow: 0 8px 28px rgba(0, 0, 0, 0.6);
+
+  --font-display: 'Cinzel', 'Trajan Pro', 'Times New Roman', serif;
+  --font-body: 'Spectral', 'Palatino Linotype', Georgia, 'Times New Roman', serif;
+
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+  background-color: var(--void);
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--text);
+  /* Atmosphere: a warm altar-glow from above, cool depth below, vignetted edges. */
+  background-image:
+    radial-gradient(135% 105% at 50% 48%, transparent 48%, rgba(0, 0, 0, 0.62) 100%),
+    radial-gradient(120% 75% at 50% -12%, rgba(140, 96, 44, 0.13), transparent 58%),
+    radial-gradient(120% 90% at 50% 118%, rgba(36, 28, 58, 0.12), transparent 60%);
+  background-attachment: fixed;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Filmic grain over the whole app — faint, never interactive. */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.05;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+::selection {
+  background: var(--gold-deep);
+  color: #120d06;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--gold);
+}
+
+/* ---- Form controls --------------------------------------------------------
+   Native widgets default to the OS light theme, which shattered the dark look.
+   Theme them globally so every input/select/button/textarea is on-brand. */
+
+button {
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--gold);
+  background: linear-gradient(180deg, var(--panel-top), var(--panel-bot));
+  border: 1px solid var(--bronze);
+  border-radius: 3px;
+  padding: 5px 11px;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: border-color 120ms ease, color 120ms ease, box-shadow 120ms ease, background 120ms ease;
+  box-shadow: inset 0 1px 0 rgba(236, 212, 154, 0.07);
+}
+button:hover:not(:disabled) {
+  color: var(--gold-bright);
+  border-color: var(--bronze-lit);
+  box-shadow: 0 0 12px rgba(200, 168, 106, 0.18), inset 0 1px 0 rgba(236, 212, 154, 0.12);
+}
+button:active:not(:disabled) {
+  background: linear-gradient(180deg, var(--panel-bot), var(--panel-top));
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+button:disabled {
+  opacity: 0.38;
+  cursor: default;
+}
+
+input,
+select,
+textarea {
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: var(--text-bright);
+  background: var(--field);
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  padding: 5px 7px;
+  transition: border-color 120ms ease, box-shadow 120ms ease;
+}
+input::placeholder,
+textarea::placeholder {
+  color: var(--text-dim);
+  font-style: italic;
+}
+input:hover,
+select:hover,
+textarea:hover {
+  border-color: var(--bronze);
+}
+input:focus,
+select:focus,
+textarea:focus,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: none;
+  border-color: var(--gold-deep);
+  box-shadow: 0 0 0 1px var(--gold-deep), 0 0 10px rgba(200, 168, 106, 0.22);
+}
+select {
+  cursor: pointer;
+  -webkit-appearance: none;
+  appearance: none;
+  /* gold chevron */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23c8a86a'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+  padding-right: 24px;
+}
+/* The native option list — Windows respects these. */
+option {
+  background: var(--panel);
+  color: var(--text-bright);
+}
+input[type='color'] {
+  padding: 1px;
+}
+
+/* ---- Scrollbars ----------------------------------------------------------- */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--bronze) transparent;
+}
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+::-webkit-scrollbar-track {
+  background: var(--void);
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--bronze), #3c3019);
+  border: 2px solid var(--void);
+  border-radius: 6px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, var(--bronze-lit), var(--bronze));
+}
+
+/* A gilded primary call-to-action (Save). */
+.btn-primary {
+  color: #1a1206;
+  background: linear-gradient(180deg, var(--gold-bright), var(--gold-deep));
+  border-color: var(--gold);
+  font-weight: 700;
+  text-shadow: 0 1px 0 rgba(255, 240, 200, 0.25);
+}
+.btn-primary:hover:not(:disabled) {
+  color: #120d05;
+  border-color: var(--gold-bright);
+  box-shadow: 0 0 14px rgba(236, 212, 154, 0.38), inset 0 1px 0 rgba(255, 245, 210, 0.3);
+}
+
+/* A clickable label dressed as a button (file inputs hide their own control). */
+.btn-label {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--gold);
+  background: linear-gradient(180deg, var(--panel-top), var(--panel-bot));
+  border: 1px solid var(--bronze);
+  border-radius: 3px;
+  padding: 6px 11px;
+  cursor: pointer;
+  box-shadow: inset 0 1px 0 rgba(236, 212, 154, 0.07);
+  transition: border-color 120ms ease, color 120ms ease, box-shadow 120ms ease;
+}
+.btn-label:hover {
+  color: var(--gold-bright);
+  border-color: var(--bronze-lit);
+  box-shadow: 0 0 12px rgba(200, 168, 106, 0.18), inset 0 1px 0 rgba(236, 212, 154, 0.12);
+}
+
+/* ---- Reusable ornaments --------------------------------------------------- */
+
+/* A stone panel with a gilt top edge and inset bevel — chrome overlays use this. */
+.panel {
+  background: linear-gradient(180deg, rgba(38, 29, 17, 0.96), rgba(16, 12, 7, 0.96));
+  border: 1px solid var(--line);
+  border-top-color: var(--bronze);
+  border-radius: 4px;
+  box-shadow: var(--shadow), inset 0 1px 0 rgba(236, 212, 154, 0.06);
+}
+
+/* A content card — Skills/Items tiles. */
+.card {
+  background: linear-gradient(180deg, var(--panel), var(--panel-bot));
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  box-shadow: inset 0 1px 0 rgba(236, 212, 154, 0.05);
+  transition: border-color 140ms ease, box-shadow 140ms ease;
+}
+.card:hover {
+  border-color: var(--bronze);
+  box-shadow: 0 0 0 1px rgba(95, 77, 43, 0.25), inset 0 1px 0 rgba(236, 212, 154, 0.07);
+}
+
+/* A list-row button — opts out of the gilded <button> chrome (used in the gem picker). */
+.gem-row {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--text);
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  box-shadow: none;
+}
+.gem-row:hover:not(:disabled) {
+  background: rgba(95, 77, 43, 0.22);
+  border-color: var(--bronze);
+  color: var(--text-bright);
+  box-shadow: none;
+}
+
+/* A thin gilded divider with a diamond center — section separators. */
+.gilt-rule {
+  height: 1px;
+  border: none;
+  margin: 0;
+  background: linear-gradient(90deg, transparent, var(--bronze) 18%, var(--gold-deep) 50%, var(--bronze) 82%, transparent);
+}

@@ -10,21 +10,24 @@ interface Props {
   placeholder?: string;
 }
 
-const wrap: CSSProperties = { display: 'flex', flexDirection: 'column', gap: 6, font: '12px sans-serif' };
+const wrap: CSSProperties = { display: 'flex', flexDirection: 'column', gap: 6, fontFamily: 'var(--font-body)', fontSize: 12 };
 const toolbar: CSSProperties = { display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: 4 };
 const btn: CSSProperties = {
-  font: '11px sans-serif', minWidth: 22, padding: '2px 5px', cursor: 'pointer',
-  background: '#f4f5f8', color: '#1b1d24', border: '1px solid #c4c7d2', borderRadius: 4,
+  fontFamily: 'var(--font-display)', fontSize: 11, fontWeight: 600, minWidth: 24, padding: '2px 6px', cursor: 'pointer',
+  background: 'linear-gradient(180deg, var(--panel-top), var(--panel-bot))', color: 'var(--gold)',
+  border: '1px solid var(--bronze)', borderRadius: 3,
 };
 const swatch: CSSProperties = {
-  width: 16, height: 16, padding: 0, cursor: 'pointer', border: '1px solid #c4c7d2', borderRadius: 3,
+  width: 16, height: 16, padding: 0, cursor: 'pointer', border: '1px solid var(--line)', borderRadius: 3,
 };
-const colourInput: CSSProperties = { width: 22, height: 18, padding: 0, border: '1px solid #c4c7d2', cursor: 'pointer' };
-const textarea: CSSProperties = { width: '100%', resize: 'vertical', font: '12px sans-serif', boxSizing: 'border-box' };
-const caption: CSSProperties = { fontSize: 10, textTransform: 'uppercase', letterSpacing: '0.5px', color: '#7f8598' };
+const colourInput: CSSProperties = { width: 24, height: 18, padding: 1, border: '1px solid var(--line)', cursor: 'pointer' };
+const textarea: CSSProperties = { width: '100%', resize: 'vertical', fontFamily: 'var(--font-body)', fontSize: 12, boxSizing: 'border-box' };
+const caption: CSSProperties = {
+  fontFamily: 'var(--font-display)', fontSize: 10, textTransform: 'uppercase', letterSpacing: '0.14em', color: 'var(--text-muted)',
+};
 const preview: CSSProperties = {
-  whiteSpace: 'pre-wrap', wordBreak: 'break-word', background: '#fbfbfd', color: '#1b1d24',
-  border: '1px solid #e0e2ea', borderRadius: 4, padding: 6, minHeight: 18,
+  whiteSpace: 'pre-wrap', wordBreak: 'break-word', background: 'var(--field)', color: 'var(--text)',
+  border: '1px solid var(--line)', borderRadius: 3, padding: 6, minHeight: 18,
 };
 
 // '#rrggbb' -> '<rgb(r, g, b)>' tag name (custom colour picker output).
@@ -86,7 +89,7 @@ export default function MarkupEditor({ value, onChange, minRows, placeholder }: 
             {t.toUpperCase()}
           </button>
         ))}
-        <span style={{ width: 1, alignSelf: 'stretch', background: '#d6d8e0', margin: '0 2px' }} />
+        <span style={{ width: 1, alignSelf: 'stretch', background: 'var(--line)', margin: '0 2px' }} />
         {Object.entries(COLOURS).map(([name, hex]) => (
           <button
             key={name}
