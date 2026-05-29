@@ -1,0 +1,36 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+dist-ssr/
+*.local
+
+# TypeScript composite build artifacts (tsc -b)
+*.tsbuildinfo
+vite.config.js
+vite.config.d.ts
+
+# Vite / tooling caches
+.vite/
+.cache/
+coverage/
+
+# Editor / OS
+.DS_Store
+.idea/
+.vscode/*
+!.vscode/extensions.json
+*.log
+
+# Superpowers brainstorming mockups
+.superpowers/
+
+# Generated public copy of the tree data + atlases (source is in "Skill Trees/")
+public/tree/
+
+# Internal agent/editor config + planning docs — not needed to build or run the app
+CLAUDE.md
+AGENTS.md
+.claude/
+docs/
