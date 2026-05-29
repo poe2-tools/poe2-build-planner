@@ -3248,5 +3248,77 @@
       ]
     }
   ],
-  "inventory_slots": []
+  "inventory_slots": [
+    {
+      "inventory_id": "Flask1",
+      "additional_text": "Flask upgrade lvl <red>{10}, <red>{16}, <red>{23}, <red>{30}, <red>{40}, <red>{50}, <red>{60}"
+    },
+    {
+      "inventory_id": "Flask2",
+      "additional_text": "Flask upgrade lvl <blue>{10}, <blue>{16}, <blue>{23}, <blue>{30}, <blue>{40}, <blue>{50}, <blue>{60}"
+    },
+    {
+      "inventory_id": "Boots1",
+      "additional_text": "<blue>{Movement speed tiers:}\n<orange>{10%} - <green>{lvl 1}\n<orange>{15%} - <green>{lvl 16}\n<orange>{20%} - <green>{lvl 33}\n<orange>{25%} - <green>{lvl 46}\n<orange>{30%} - <green>{lvl 65}\n<orange>{35%} - <green>{lvl 82}"
+    },
+    {
+      "inventory_id": "Offhand1",
+      "additional_text": "<green>{Quiver}\n+ levels of skills\nflat damage"
+    },
+    {
+      "inventory_id": "Weapon1",
+      "additional_text": "Get <green>{lvl 5} <yellow>{Shortbow} at <red>{Red Vale} - <blue>{Trans + Aug}\nLook for <green>{lvl 11} <yellow>{Warden Bow} - Highest DMG\nLook for <green>{lvl 16} <yellow>{Recurve Bow} - <bronze>{Craft 2 sockets + 6 mod}",
+      "level_interval": [
+        1,
+        32
+      ]
+    },
+    {
+      "inventory_id": "Offhand1",
+      "level_interval": [
+        1,
+        32
+      ]
+    },
+    {
+      "inventory_id": "Weapon2",
+      "additional_text": "Get a low level <yellow>{Changeling} or <yellow>{Nettle Talisman} for pounce.\nAffixes do not matter, can even be normal rarity.",
+      "level_interval": [
+        1,
+        32
+      ]
+    },
+    {
+      "inventory_id": "Weapon1",
+      "additional_text": "Look for <green>{lvl 33} <yellow>{Dualstring} or <yellow>{Cultist Bow} - <bronze>{Craft 2 sockets + 6 mod}",
+      "level_interval": [
+        32,
+        45
+      ]
+    },
+    {
+      "inventory_id": "Weapon2",
+      "additional_text": "<red>{Drop Talisman} and <blue>{lock Bow + Quiver} on both slots",
+      "level_interval": [
+        32,
+        45
+      ]
+    },
+    {
+      "inventory_id": "Offhand2",
+      "additional_text": "<red>{Drop Talisman} and <blue>{lock Bow + Quiver} on both slots",
+      "level_interval": [
+        32,
+        45
+      ]
+    },
+    {
+      "inventory_id": "Weapon1",
+      "additional_text": "Look for <green>{lvl 46} <yellow>{Artillery Bow} - <bronze>{Craft 2 sockets + 6 mod}",
+      "level_interval": [
+        46,
+        100
+      ]
+    }
+  ]
 }
