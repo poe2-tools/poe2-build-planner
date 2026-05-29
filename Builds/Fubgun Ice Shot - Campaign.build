@@ -1,0 +1,3252 @@
+{
+  "name": "Ice Shot - Campaign",
+  "author": "Fubgun",
+  "ascendancy": "Ranger1",
+  "passives": [
+    {
+      "id": "projectiles15",
+      "level_interval": [
+        1,
+        14
+      ]
+    },
+    {
+      "id": "projectiles22",
+      "level_interval": [
+        1,
+        14
+      ]
+    },
+    {
+      "id": "projectiles8",
+      "level_interval": [
+        1,
+        14
+      ]
+    },
+    {
+      "id": "projectiles14",
+      "level_interval": [
+        1,
+        14
+      ]
+    },
+    {
+      "id": "ranger_huntress_notable2",
+      "level_interval": [
+        1,
+        14
+      ]
+    },
+    {
+      "id": "projectiles16",
+      "level_interval": [
+        1,
+        14
+      ]
+    },
+    {
+      "id": "projectiles23",
+      "level_interval": [
+        1,
+        14
+      ]
+    },
+    {
+      "id": "projectiles17",
+      "level_interval": [
+        1,
+        14
+      ]
+    },
+    {
+      "id": "ranged6",
+      "level_interval": [
+        1,
+        14
+      ]
+    },
+    {
+      "id": "dexterity19",
+      "level_interval": [
+        1,
+        14
+      ]
+    },
+    {
+      "id": "dexterity20",
+      "level_interval": [
+        1,
+        14
+      ]
+    },
+    {
+      "id": "attributes29",
+      "level_interval": [
+        1,
+        14
+      ]
+    },
+    {
+      "id": "attack35",
+      "level_interval": [
+        1,
+        14
+      ]
+    },
+    {
+      "id": "attack36",
+      "level_interval": [
+        1,
+        14
+      ]
+    },
+    {
+      "id": "elemental54",
+      "level_interval": [
+        1,
+        14
+      ]
+    },
+    {
+      "id": "elemental55",
+      "level_interval": [
+        1,
+        14
+      ]
+    },
+    {
+      "id": "elemental56",
+      "level_interval": [
+        1,
+        14
+      ]
+    },
+    {
+      "id": "AscendancyRanger1Start",
+      "level_interval": [
+        1,
+        14
+      ]
+    },
+    {
+      "id": "AscendancyRanger1Small2",
+      "level_interval": [
+        1,
+        14
+      ]
+    },
+    {
+      "id": "AscendancyRanger1Notable2_Choice",
+      "level_interval": [
+        1,
+        14
+      ]
+    },
+    {
+      "id": "AscendancyRanger1Notable2_2",
+      "level_interval": [
+        1,
+        14
+      ]
+    },
+    {
+      "id": "AscendancyRanger1Small1__",
+      "level_interval": [
+        1,
+        14
+      ]
+    },
+    {
+      "id": "AscendancyRanger1Notable1",
+      "level_interval": [
+        1,
+        14
+      ]
+    },
+    {
+      "id": "projectiles15",
+      "level_interval": [
+        15,
+        23
+      ]
+    },
+    {
+      "id": "projectiles22",
+      "level_interval": [
+        15,
+        23
+      ]
+    },
+    {
+      "id": "projectiles8",
+      "level_interval": [
+        15,
+        23
+      ]
+    },
+    {
+      "id": "projectiles14",
+      "level_interval": [
+        15,
+        23
+      ]
+    },
+    {
+      "id": "ranger_huntress_notable2",
+      "level_interval": [
+        15,
+        23
+      ]
+    },
+    {
+      "id": "projectiles16",
+      "level_interval": [
+        15,
+        23
+      ]
+    },
+    {
+      "id": "projectiles23",
+      "level_interval": [
+        15,
+        23
+      ]
+    },
+    {
+      "id": "projectiles17",
+      "level_interval": [
+        15,
+        23
+      ]
+    },
+    {
+      "id": "ranged6",
+      "level_interval": [
+        15,
+        23
+      ]
+    },
+    {
+      "id": "dexterity19",
+      "level_interval": [
+        15,
+        23
+      ]
+    },
+    {
+      "id": "dexterity20",
+      "level_interval": [
+        15,
+        23
+      ]
+    },
+    {
+      "id": "attributes29",
+      "level_interval": [
+        15,
+        23
+      ]
+    },
+    {
+      "id": "dexterity34",
+      "level_interval": [
+        15,
+        23
+      ]
+    },
+    {
+      "id": "attack35",
+      "level_interval": [
+        15,
+        23
+      ]
+    },
+    {
+      "id": "elemental28",
+      "level_interval": [
+        15,
+        23
+      ]
+    },
+    {
+      "id": "attack36",
+      "level_interval": [
+        15,
+        23
+      ]
+    },
+    {
+      "id": "elemental25",
+      "level_interval": [
+        15,
+        23
+      ]
+    },
+    {
+      "id": "elemental54",
+      "level_interval": [
+        15,
+        23
+      ]
+    },
+    {
+      "id": "elemental18",
+      "level_interval": [
+        15,
+        23
+      ]
+    },
+    {
+      "id": "elemental55",
+      "level_interval": [
+        15,
+        23
+      ]
+    },
+    {
+      "id": "elemental32",
+      "level_interval": [
+        15,
+        23
+      ]
+    },
+    {
+      "id": "elemental56",
+      "level_interval": [
+        15,
+        23
+      ]
+    },
+    {
+      "id": "elemental16",
+      "level_interval": [
+        15,
+        23
+      ]
+    },
+    {
+      "id": "elemental26",
+      "level_interval": [
+        15,
+        23
+      ]
+    },
+    {
+      "id": "elemental27",
+      "level_interval": [
+        15,
+        23
+      ]
+    },
+    {
+      "id": "dexterity40",
+      "level_interval": [
+        15,
+        23
+      ]
+    },
+    {
+      "id": "cold50",
+      "level_interval": [
+        15,
+        23
+      ]
+    },
+    {
+      "id": "cold49",
+      "level_interval": [
+        15,
+        23
+      ]
+    },
+    {
+      "id": "cold51",
+      "level_interval": [
+        15,
+        23
+      ]
+    },
+    {
+      "id": "AscendancyRanger1Start",
+      "level_interval": [
+        15,
+        23
+      ]
+    },
+    {
+      "id": "AscendancyRanger1Small2",
+      "level_interval": [
+        15,
+        23
+      ]
+    },
+    {
+      "id": "AscendancyRanger1Notable2_Choice",
+      "level_interval": [
+        15,
+        23
+      ]
+    },
+    {
+      "id": "AscendancyRanger1Notable2_2",
+      "level_interval": [
+        15,
+        23
+      ]
+    },
+    {
+      "id": "AscendancyRanger1Small1__",
+      "level_interval": [
+        15,
+        23
+      ]
+    },
+    {
+      "id": "AscendancyRanger1Notable1",
+      "level_interval": [
+        15,
+        23
+      ]
+    },
+    {
+      "id": "projectiles15",
+      "level_interval": [
+        24,
+        30
+      ]
+    },
+    {
+      "id": "projectiles22",
+      "level_interval": [
+        24,
+        30
+      ]
+    },
+    {
+      "id": "projectiles8",
+      "level_interval": [
+        24,
+        30
+      ]
+    },
+    {
+      "id": "projectiles14",
+      "level_interval": [
+        24,
+        30
+      ]
+    },
+    {
+      "id": "ranger_huntress_notable2",
+      "level_interval": [
+        24,
+        30
+      ]
+    },
+    {
+      "id": "projectiles16",
+      "level_interval": [
+        24,
+        30
+      ]
+    },
+    {
+      "id": "projectiles23",
+      "level_interval": [
+        24,
+        30
+      ]
+    },
+    {
+      "id": "projectiles17",
+      "level_interval": [
+        24,
+        30
+      ]
+    },
+    {
+      "id": "ranged6",
+      "level_interval": [
+        24,
+        30
+      ]
+    },
+    {
+      "id": "dexterity19",
+      "level_interval": [
+        24,
+        30
+      ]
+    },
+    {
+      "id": "dexterity20",
+      "level_interval": [
+        24,
+        30
+      ]
+    },
+    {
+      "id": "attributes29",
+      "level_interval": [
+        24,
+        30
+      ]
+    },
+    {
+      "id": "dexterity34",
+      "level_interval": [
+        24,
+        30
+      ]
+    },
+    {
+      "id": "attack35",
+      "level_interval": [
+        24,
+        30
+      ]
+    },
+    {
+      "id": "elemental28",
+      "level_interval": [
+        24,
+        30
+      ]
+    },
+    {
+      "id": "attack36",
+      "level_interval": [
+        24,
+        30
+      ]
+    },
+    {
+      "id": "elemental25",
+      "level_interval": [
+        24,
+        30
+      ]
+    },
+    {
+      "id": "elemental54",
+      "level_interval": [
+        24,
+        30
+      ]
+    },
+    {
+      "id": "elemental18",
+      "level_interval": [
+        24,
+        30
+      ]
+    },
+    {
+      "id": "elemental55",
+      "level_interval": [
+        24,
+        30
+      ]
+    },
+    {
+      "id": "elemental32",
+      "level_interval": [
+        24,
+        30
+      ]
+    },
+    {
+      "id": "elemental56",
+      "level_interval": [
+        24,
+        30
+      ]
+    },
+    {
+      "id": "elemental16",
+      "level_interval": [
+        24,
+        30
+      ]
+    },
+    {
+      "id": "elemental26",
+      "level_interval": [
+        24,
+        30
+      ]
+    },
+    {
+      "id": "elemental27",
+      "level_interval": [
+        24,
+        30
+      ]
+    },
+    {
+      "id": "dexterity40",
+      "level_interval": [
+        24,
+        30
+      ]
+    },
+    {
+      "id": "cold50",
+      "level_interval": [
+        24,
+        30
+      ]
+    },
+    {
+      "id": "cold49",
+      "level_interval": [
+        24,
+        30
+      ]
+    },
+    {
+      "id": "cold51",
+      "level_interval": [
+        24,
+        30
+      ]
+    },
+    {
+      "id": "jewel_slot1960",
+      "level_interval": [
+        24,
+        30
+      ]
+    },
+    {
+      "id": "dexterity12_",
+      "level_interval": [
+        24,
+        30
+      ]
+    },
+    {
+      "id": "elemental_attacks6",
+      "level_interval": [
+        24,
+        30
+      ]
+    },
+    {
+      "id": "elemental_attacks8",
+      "level_interval": [
+        24,
+        30
+      ]
+    },
+    {
+      "id": "dexterity54",
+      "level_interval": [
+        24,
+        30
+      ]
+    },
+    {
+      "id": "attack6",
+      "level_interval": [
+        24,
+        30
+      ]
+    },
+    {
+      "id": "attack2",
+      "level_interval": [
+        24,
+        30
+      ]
+    },
+    {
+      "id": "attack5",
+      "level_interval": [
+        24,
+        30
+      ]
+    },
+    {
+      "id": "AscendancyRanger1Start",
+      "level_interval": [
+        24,
+        30
+      ]
+    },
+    {
+      "id": "AscendancyRanger1Small2",
+      "level_interval": [
+        24,
+        30
+      ]
+    },
+    {
+      "id": "AscendancyRanger1Notable2_Choice",
+      "level_interval": [
+        24,
+        30
+      ]
+    },
+    {
+      "id": "AscendancyRanger1Notable2_2",
+      "level_interval": [
+        24,
+        30
+      ]
+    },
+    {
+      "id": "AscendancyRanger1Small1__",
+      "level_interval": [
+        24,
+        30
+      ]
+    },
+    {
+      "id": "AscendancyRanger1Notable1",
+      "level_interval": [
+        24,
+        30
+      ]
+    },
+    {
+      "id": "projectiles15",
+      "level_interval": [
+        31,
+        41
+      ]
+    },
+    {
+      "id": "projectiles22",
+      "level_interval": [
+        31,
+        41
+      ]
+    },
+    {
+      "id": "projectiles8",
+      "level_interval": [
+        31,
+        41
+      ]
+    },
+    {
+      "id": "projectiles14",
+      "level_interval": [
+        31,
+        41
+      ]
+    },
+    {
+      "id": "ranger_huntress_notable2",
+      "level_interval": [
+        31,
+        41
+      ]
+    },
+    {
+      "id": "projectiles16",
+      "level_interval": [
+        31,
+        41
+      ]
+    },
+    {
+      "id": "projectiles23",
+      "level_interval": [
+        31,
+        41
+      ]
+    },
+    {
+      "id": "projectiles17",
+      "level_interval": [
+        31,
+        41
+      ]
+    },
+    {
+      "id": "ranged6",
+      "level_interval": [
+        31,
+        41
+      ]
+    },
+    {
+      "id": "dexterity19",
+      "level_interval": [
+        31,
+        41
+      ]
+    },
+    {
+      "id": "dexterity20",
+      "level_interval": [
+        31,
+        41
+      ]
+    },
+    {
+      "id": "attributes29",
+      "level_interval": [
+        31,
+        41
+      ]
+    },
+    {
+      "id": "dexterity34",
+      "level_interval": [
+        31,
+        41
+      ]
+    },
+    {
+      "id": "attack35",
+      "weapon_set": 1,
+      "level_interval": [
+        31,
+        41
+      ]
+    },
+    {
+      "id": "elemental28",
+      "level_interval": [
+        31,
+        41
+      ]
+    },
+    {
+      "id": "jewel_slot1960",
+      "level_interval": [
+        31,
+        41
+      ]
+    },
+    {
+      "id": "attack36",
+      "weapon_set": 1,
+      "level_interval": [
+        31,
+        41
+      ]
+    },
+    {
+      "id": "elemental25",
+      "level_interval": [
+        31,
+        41
+      ]
+    },
+    {
+      "id": "dexterity12_",
+      "level_interval": [
+        31,
+        41
+      ]
+    },
+    {
+      "id": "elemental54",
+      "weapon_set": 1,
+      "level_interval": [
+        31,
+        41
+      ]
+    },
+    {
+      "id": "elemental18",
+      "level_interval": [
+        31,
+        41
+      ]
+    },
+    {
+      "id": "elemental_attacks6",
+      "weapon_set": 1,
+      "level_interval": [
+        31,
+        41
+      ]
+    },
+    {
+      "id": "dexterity54",
+      "level_interval": [
+        31,
+        41
+      ]
+    },
+    {
+      "id": "elemental55",
+      "weapon_set": 1,
+      "level_interval": [
+        31,
+        41
+      ]
+    },
+    {
+      "id": "elemental32",
+      "level_interval": [
+        31,
+        41
+      ]
+    },
+    {
+      "id": "elemental_attacks8",
+      "weapon_set": 1,
+      "level_interval": [
+        31,
+        41
+      ],
+      "additional_text": "Change to weapon set 1"
+    },
+    {
+      "id": "attack6",
+      "level_interval": [
+        31,
+        41
+      ]
+    },
+    {
+      "id": "dexterity55",
+      "level_interval": [
+        31,
+        41
+      ],
+      "additional_text": "Check previous points that are changing to weapon set points"
+    },
+    {
+      "id": "elemental56",
+      "weapon_set": 1,
+      "level_interval": [
+        31,
+        41
+      ],
+      "additional_text": "Change to weapon set 1"
+    },
+    {
+      "id": "elemental16",
+      "level_interval": [
+        31,
+        41
+      ]
+    },
+    {
+      "id": "attack2",
+      "level_interval": [
+        31,
+        41
+      ]
+    },
+    {
+      "id": "dexterity82_",
+      "level_interval": [
+        31,
+        41
+      ]
+    },
+    {
+      "id": "dexterity52",
+      "level_interval": [
+        31,
+        41
+      ]
+    },
+    {
+      "id": "elemental26",
+      "level_interval": [
+        31,
+        41
+      ]
+    },
+    {
+      "id": "attack5",
+      "level_interval": [
+        31,
+        41
+      ]
+    },
+    {
+      "id": "movement_speed5",
+      "level_interval": [
+        31,
+        41
+      ]
+    },
+    {
+      "id": "dexterity51",
+      "level_interval": [
+        31,
+        41
+      ]
+    },
+    {
+      "id": "elemental27",
+      "level_interval": [
+        31,
+        41
+      ]
+    },
+    {
+      "id": "movement_speed4",
+      "level_interval": [
+        31,
+        41
+      ]
+    },
+    {
+      "id": "attributes10",
+      "level_interval": [
+        31,
+        41
+      ]
+    },
+    {
+      "id": "heralds12_",
+      "level_interval": [
+        31,
+        41
+      ]
+    },
+    {
+      "id": "dexterity40",
+      "level_interval": [
+        31,
+        41
+      ]
+    },
+    {
+      "id": "movement_speed9",
+      "level_interval": [
+        31,
+        41
+      ],
+      "additional_text": "Check previous points that are changing to weapon set points"
+    },
+    {
+      "id": "cold44",
+      "level_interval": [
+        31,
+        41
+      ]
+    },
+    {
+      "id": "heralds10",
+      "level_interval": [
+        31,
+        41
+      ]
+    },
+    {
+      "id": "cold50",
+      "weapon_set": 1,
+      "level_interval": [
+        31,
+        41
+      ]
+    },
+    {
+      "id": "cold45",
+      "level_interval": [
+        31,
+        41
+      ]
+    },
+    {
+      "id": "heralds16_",
+      "level_interval": [
+        31,
+        41
+      ]
+    },
+    {
+      "id": "cold49",
+      "weapon_set": 1,
+      "level_interval": [
+        31,
+        41
+      ]
+    },
+    {
+      "id": "cold48",
+      "level_interval": [
+        31,
+        41
+      ]
+    },
+    {
+      "id": "cold51",
+      "weapon_set": 1,
+      "level_interval": [
+        31,
+        41
+      ],
+      "additional_text": "Change to weapon set 1"
+    },
+    {
+      "id": "dexterity81",
+      "weapon_set": 2,
+      "level_interval": [
+        31,
+        41
+      ]
+    },
+    {
+      "id": "attributes9",
+      "weapon_set": 2,
+      "level_interval": [
+        31,
+        41
+      ]
+    },
+    {
+      "id": "marks16",
+      "weapon_set": 2,
+      "level_interval": [
+        31,
+        41
+      ]
+    },
+    {
+      "id": "marks5_",
+      "weapon_set": 2,
+      "level_interval": [
+        31,
+        41
+      ]
+    },
+    {
+      "id": "marks15",
+      "weapon_set": 2,
+      "level_interval": [
+        31,
+        41
+      ]
+    },
+    {
+      "id": "marks12",
+      "weapon_set": 2,
+      "level_interval": [
+        31,
+        41
+      ]
+    },
+    {
+      "id": "marks14",
+      "weapon_set": 2,
+      "level_interval": [
+        31,
+        41
+      ]
+    },
+    {
+      "id": "marks8",
+      "weapon_set": 2,
+      "level_interval": [
+        31,
+        41
+      ]
+    },
+    {
+      "id": "marks17",
+      "weapon_set": 2,
+      "level_interval": [
+        31,
+        41
+      ]
+    },
+    {
+      "id": "marks13",
+      "weapon_set": 2,
+      "level_interval": [
+        31,
+        41
+      ]
+    },
+    {
+      "id": "AscendancyRanger1Start",
+      "level_interval": [
+        31,
+        41
+      ]
+    },
+    {
+      "id": "AscendancyRanger1Small2",
+      "level_interval": [
+        31,
+        41
+      ]
+    },
+    {
+      "id": "AscendancyRanger1Notable2_Choice",
+      "level_interval": [
+        31,
+        41
+      ]
+    },
+    {
+      "id": "AscendancyRanger1Notable2_2",
+      "level_interval": [
+        31,
+        41
+      ]
+    },
+    {
+      "id": "AscendancyRanger1Small1__",
+      "level_interval": [
+        31,
+        41
+      ]
+    },
+    {
+      "id": "AscendancyRanger1Notable1",
+      "level_interval": [
+        31,
+        41
+      ]
+    },
+    {
+      "id": "AscendancyRanger1Start",
+      "level_interval": [
+        42,
+        59
+      ]
+    },
+    {
+      "id": "projectiles15",
+      "level_interval": [
+        42,
+        59
+      ]
+    },
+    {
+      "id": "AscendancyRanger1Small2",
+      "level_interval": [
+        42,
+        59
+      ]
+    },
+    {
+      "id": "projectiles22",
+      "level_interval": [
+        42,
+        59
+      ]
+    },
+    {
+      "id": "AscendancyRanger1Notable2_Choice",
+      "level_interval": [
+        42,
+        59
+      ]
+    },
+    {
+      "id": "projectiles8",
+      "level_interval": [
+        42,
+        59
+      ]
+    },
+    {
+      "id": "AscendancyRanger1Small1__",
+      "level_interval": [
+        42,
+        59
+      ]
+    },
+    {
+      "id": "AscendancyRanger1Notable2_2",
+      "level_interval": [
+        42,
+        59
+      ]
+    },
+    {
+      "id": "projectiles14",
+      "level_interval": [
+        42,
+        59
+      ]
+    },
+    {
+      "id": "AscendancyRanger1Notable1",
+      "level_interval": [
+        42,
+        59
+      ]
+    },
+    {
+      "id": "ranger_huntress_notable2",
+      "level_interval": [
+        42,
+        59
+      ]
+    },
+    {
+      "id": "exploiting_elemental_ailments8",
+      "level_interval": [
+        42,
+        59
+      ]
+    },
+    {
+      "id": "projectiles16",
+      "level_interval": [
+        42,
+        59
+      ]
+    },
+    {
+      "id": "exploiting_elemental_ailments10",
+      "level_interval": [
+        42,
+        59
+      ]
+    },
+    {
+      "id": "projectiles23",
+      "level_interval": [
+        42,
+        59
+      ]
+    },
+    {
+      "id": "projectiles17",
+      "level_interval": [
+        42,
+        59
+      ]
+    },
+    {
+      "id": "ranged6",
+      "level_interval": [
+        42,
+        59
+      ]
+    },
+    {
+      "id": "dexterity19",
+      "level_interval": [
+        42,
+        59
+      ]
+    },
+    {
+      "id": "dexterity20",
+      "level_interval": [
+        42,
+        59
+      ]
+    },
+    {
+      "id": "attributes29",
+      "level_interval": [
+        42,
+        59
+      ]
+    },
+    {
+      "id": "dexterity34",
+      "level_interval": [
+        42,
+        59
+      ]
+    },
+    {
+      "id": "attack35",
+      "weapon_set": 1,
+      "level_interval": [
+        42,
+        59
+      ]
+    },
+    {
+      "id": "elemental28",
+      "level_interval": [
+        42,
+        59
+      ]
+    },
+    {
+      "id": "jewel_slot1960",
+      "level_interval": [
+        42,
+        59
+      ]
+    },
+    {
+      "id": "attack36",
+      "weapon_set": 1,
+      "level_interval": [
+        42,
+        59
+      ]
+    },
+    {
+      "id": "elemental25",
+      "level_interval": [
+        42,
+        59
+      ]
+    },
+    {
+      "id": "dexterity12_",
+      "level_interval": [
+        42,
+        59
+      ]
+    },
+    {
+      "id": "elemental54",
+      "weapon_set": 1,
+      "level_interval": [
+        42,
+        59
+      ]
+    },
+    {
+      "id": "elemental18",
+      "level_interval": [
+        42,
+        59
+      ]
+    },
+    {
+      "id": "elemental_attacks6",
+      "weapon_set": 1,
+      "level_interval": [
+        42,
+        59
+      ]
+    },
+    {
+      "id": "dexterity54",
+      "level_interval": [
+        42,
+        59
+      ]
+    },
+    {
+      "id": "elemental55",
+      "weapon_set": 1,
+      "level_interval": [
+        42,
+        59
+      ]
+    },
+    {
+      "id": "elemental32",
+      "level_interval": [
+        42,
+        59
+      ]
+    },
+    {
+      "id": "elemental_attacks8",
+      "weapon_set": 1,
+      "level_interval": [
+        42,
+        59
+      ]
+    },
+    {
+      "id": "attack6",
+      "level_interval": [
+        42,
+        59
+      ]
+    },
+    {
+      "id": "dexterity55",
+      "level_interval": [
+        42,
+        59
+      ]
+    },
+    {
+      "id": "elemental56",
+      "weapon_set": 1,
+      "level_interval": [
+        42,
+        59
+      ]
+    },
+    {
+      "id": "elemental16",
+      "level_interval": [
+        42,
+        59
+      ]
+    },
+    {
+      "id": "attack2",
+      "level_interval": [
+        42,
+        59
+      ]
+    },
+    {
+      "id": "dexterity82_",
+      "level_interval": [
+        42,
+        59
+      ]
+    },
+    {
+      "id": "dexterity52",
+      "level_interval": [
+        42,
+        59
+      ]
+    },
+    {
+      "id": "elemental26",
+      "level_interval": [
+        42,
+        59
+      ]
+    },
+    {
+      "id": "attack5",
+      "weapon_set": 1,
+      "level_interval": [
+        42,
+        59
+      ],
+      "additional_text": "Change to weapon set 1 (Just last node)"
+    },
+    {
+      "id": "dexterity81",
+      "weapon_set": 2,
+      "level_interval": [
+        42,
+        59
+      ]
+    },
+    {
+      "id": "movement_speed5",
+      "level_interval": [
+        42,
+        59
+      ]
+    },
+    {
+      "id": "azmerianimals38",
+      "level_interval": [
+        42,
+        59
+      ]
+    },
+    {
+      "id": "dexterity51",
+      "level_interval": [
+        42,
+        59
+      ]
+    },
+    {
+      "id": "elemental27",
+      "level_interval": [
+        42,
+        59
+      ]
+    },
+    {
+      "id": "attributes9",
+      "weapon_set": 2,
+      "level_interval": [
+        42,
+        59
+      ]
+    },
+    {
+      "id": "movement_speed4",
+      "level_interval": [
+        42,
+        59
+      ]
+    },
+    {
+      "id": "azmerianimals40",
+      "level_interval": [
+        42,
+        59
+      ]
+    },
+    {
+      "id": "attributes10",
+      "level_interval": [
+        42,
+        59
+      ]
+    },
+    {
+      "id": "heralds12_",
+      "weapon_set": 1,
+      "level_interval": [
+        42,
+        59
+      ]
+    },
+    {
+      "id": "dexterity40",
+      "level_interval": [
+        42,
+        59
+      ]
+    },
+    {
+      "id": "marks16",
+      "weapon_set": 2,
+      "level_interval": [
+        42,
+        59
+      ]
+    },
+    {
+      "id": "movement_speed9",
+      "level_interval": [
+        42,
+        59
+      ]
+    },
+    {
+      "id": "azmerianimals41",
+      "level_interval": [
+        42,
+        59
+      ]
+    },
+    {
+      "id": "cold44",
+      "level_interval": [
+        42,
+        59
+      ]
+    },
+    {
+      "id": "heralds10",
+      "weapon_set": 1,
+      "level_interval": [
+        42,
+        59
+      ]
+    },
+    {
+      "id": "dexterity39",
+      "level_interval": [
+        42,
+        59
+      ]
+    },
+    {
+      "id": "cold50",
+      "weapon_set": 1,
+      "level_interval": [
+        42,
+        59
+      ]
+    },
+    {
+      "id": "marks5_",
+      "weapon_set": 2,
+      "level_interval": [
+        42,
+        59
+      ]
+    },
+    {
+      "id": "azmerianimals42",
+      "level_interval": [
+        42,
+        59
+      ]
+    },
+    {
+      "id": "cold45",
+      "level_interval": [
+        42,
+        59
+      ]
+    },
+    {
+      "id": "heralds16_",
+      "weapon_set": 1,
+      "level_interval": [
+        42,
+        59
+      ],
+      "additional_text": "Change to weapon set 1"
+    },
+    {
+      "id": "dexterity11",
+      "level_interval": [
+        42,
+        59
+      ]
+    },
+    {
+      "id": "attack_speed57",
+      "level_interval": [
+        42,
+        59
+      ]
+    },
+    {
+      "id": "cold49",
+      "weapon_set": 1,
+      "level_interval": [
+        42,
+        59
+      ]
+    },
+    {
+      "id": "marks13",
+      "weapon_set": 2,
+      "level_interval": [
+        42,
+        59
+      ]
+    },
+    {
+      "id": "marks14",
+      "weapon_set": 2,
+      "level_interval": [
+        42,
+        59
+      ]
+    },
+    {
+      "id": "marks15",
+      "weapon_set": 2,
+      "level_interval": [
+        42,
+        59
+      ]
+    },
+    {
+      "id": "marks8",
+      "weapon_set": 2,
+      "level_interval": [
+        42,
+        59
+      ]
+    },
+    {
+      "id": "cold48",
+      "level_interval": [
+        42,
+        59
+      ]
+    },
+    {
+      "id": "dexterity10",
+      "level_interval": [
+        42,
+        59
+      ]
+    },
+    {
+      "id": "attack13_",
+      "weapon_set": 1,
+      "level_interval": [
+        42,
+        59
+      ]
+    },
+    {
+      "id": "attack_speed58",
+      "level_interval": [
+        42,
+        59
+      ]
+    },
+    {
+      "id": "cold51",
+      "weapon_set": 1,
+      "level_interval": [
+        42,
+        59
+      ]
+    },
+    {
+      "id": "marks17",
+      "weapon_set": 2,
+      "level_interval": [
+        42,
+        59
+      ]
+    },
+    {
+      "id": "marks12",
+      "weapon_set": 2,
+      "level_interval": [
+        42,
+        59
+      ]
+    },
+    {
+      "id": "dexterity5",
+      "level_interval": [
+        42,
+        59
+      ]
+    },
+    {
+      "id": "attack14",
+      "weapon_set": 1,
+      "level_interval": [
+        42,
+        59
+      ]
+    },
+    {
+      "id": "attack_speed60_",
+      "level_interval": [
+        42,
+        59
+      ]
+    },
+    {
+      "id": "cold29",
+      "level_interval": [
+        42,
+        59
+      ]
+    },
+    {
+      "id": "dexterity6",
+      "level_interval": [
+        42,
+        59
+      ]
+    },
+    {
+      "id": "attack16",
+      "weapon_set": 1,
+      "level_interval": [
+        42,
+        59
+      ]
+    },
+    {
+      "id": "cold39__",
+      "level_interval": [
+        42,
+        59
+      ]
+    },
+    {
+      "id": "attack41__",
+      "level_interval": [
+        42,
+        59
+      ]
+    },
+    {
+      "id": "cold28",
+      "level_interval": [
+        42,
+        59
+      ]
+    },
+    {
+      "id": "attack42",
+      "level_interval": [
+        42,
+        59
+      ]
+    },
+    {
+      "id": "shadow_monk_notable2",
+      "level_interval": [
+        42,
+        59
+      ]
+    },
+    {
+      "id": "attack43",
+      "level_interval": [
+        42,
+        59
+      ]
+    },
+    {
+      "id": "attack45",
+      "level_interval": [
+        42,
+        59
+      ]
+    },
+    {
+      "id": "shock3",
+      "weapon_set": 2,
+      "level_interval": [
+        42,
+        59
+      ]
+    },
+    {
+      "id": "shock4",
+      "weapon_set": 2,
+      "level_interval": [
+        42,
+        59
+      ]
+    },
+    {
+      "id": "shock15",
+      "weapon_set": 2,
+      "level_interval": [
+        42,
+        59
+      ]
+    },
+    {
+      "id": "shock6",
+      "weapon_set": 2,
+      "level_interval": [
+        42,
+        59
+      ]
+    },
+    {
+      "id": "AscendancyRanger1Start",
+      "level_interval": [
+        60,
+        100
+      ]
+    },
+    {
+      "id": "projectiles15",
+      "level_interval": [
+        60,
+        100
+      ]
+    },
+    {
+      "id": "AscendancyRanger1Small2",
+      "level_interval": [
+        60,
+        100
+      ]
+    },
+    {
+      "id": "projectiles22",
+      "level_interval": [
+        60,
+        100
+      ]
+    },
+    {
+      "id": "AscendancyRanger1Notable2_Choice",
+      "level_interval": [
+        60,
+        100
+      ]
+    },
+    {
+      "id": "projectiles8",
+      "level_interval": [
+        60,
+        100
+      ]
+    },
+    {
+      "id": "AscendancyRanger1Small1__",
+      "level_interval": [
+        60,
+        100
+      ]
+    },
+    {
+      "id": "AscendancyRanger1Notable2_2",
+      "level_interval": [
+        60,
+        100
+      ]
+    },
+    {
+      "id": "projectiles14",
+      "level_interval": [
+        60,
+        100
+      ]
+    },
+    {
+      "id": "AscendancyRanger1Notable1",
+      "level_interval": [
+        60,
+        100
+      ]
+    },
+    {
+      "id": "ranger_huntress_notable2",
+      "level_interval": [
+        60,
+        100
+      ]
+    },
+    {
+      "id": "exploiting_elemental_ailments8",
+      "level_interval": [
+        60,
+        100
+      ]
+    },
+    {
+      "id": "projectiles16",
+      "level_interval": [
+        60,
+        100
+      ]
+    },
+    {
+      "id": "exploiting_elemental_ailments10",
+      "level_interval": [
+        60,
+        100
+      ]
+    },
+    {
+      "id": "projectiles23",
+      "level_interval": [
+        60,
+        100
+      ]
+    },
+    {
+      "id": "projectiles17",
+      "level_interval": [
+        60,
+        100
+      ]
+    },
+    {
+      "id": "ranged6",
+      "level_interval": [
+        60,
+        100
+      ]
+    },
+    {
+      "id": "dexterity19",
+      "level_interval": [
+        60,
+        100
+      ]
+    },
+    {
+      "id": "dexterity20",
+      "level_interval": [
+        60,
+        100
+      ]
+    },
+    {
+      "id": "attributes29",
+      "level_interval": [
+        60,
+        100
+      ]
+    },
+    {
+      "id": "dexterity34",
+      "level_interval": [
+        60,
+        100
+      ]
+    },
+    {
+      "id": "attack35",
+      "weapon_set": 1,
+      "level_interval": [
+        60,
+        100
+      ]
+    },
+    {
+      "id": "elemental28",
+      "level_interval": [
+        60,
+        100
+      ]
+    },
+    {
+      "id": "jewel_slot1960",
+      "level_interval": [
+        60,
+        100
+      ]
+    },
+    {
+      "id": "attack36",
+      "weapon_set": 1,
+      "level_interval": [
+        60,
+        100
+      ]
+    },
+    {
+      "id": "elemental25",
+      "level_interval": [
+        60,
+        100
+      ]
+    },
+    {
+      "id": "dexterity85_",
+      "weapon_set": 2,
+      "level_interval": [
+        60,
+        100
+      ]
+    },
+    {
+      "id": "dexterity12_",
+      "level_interval": [
+        60,
+        100
+      ]
+    },
+    {
+      "id": "elemental54",
+      "weapon_set": 1,
+      "level_interval": [
+        60,
+        100
+      ]
+    },
+    {
+      "id": "elemental18",
+      "level_interval": [
+        60,
+        100
+      ]
+    },
+    {
+      "id": "dexterity57",
+      "weapon_set": 2,
+      "level_interval": [
+        60,
+        100
+      ]
+    },
+    {
+      "id": "elemental_attacks6",
+      "weapon_set": 1,
+      "level_interval": [
+        60,
+        100
+      ]
+    },
+    {
+      "id": "dexterity54",
+      "level_interval": [
+        60,
+        100
+      ]
+    },
+    {
+      "id": "elemental55",
+      "weapon_set": 1,
+      "level_interval": [
+        60,
+        100
+      ]
+    },
+    {
+      "id": "elemental32",
+      "level_interval": [
+        60,
+        100
+      ]
+    },
+    {
+      "id": "attributes74",
+      "weapon_set": 2,
+      "level_interval": [
+        60,
+        100
+      ]
+    },
+    {
+      "id": "elemental_attacks8",
+      "weapon_set": 1,
+      "level_interval": [
+        60,
+        100
+      ]
+    },
+    {
+      "id": "shock3",
+      "weapon_set": 2,
+      "level_interval": [
+        60,
+        100
+      ]
+    },
+    {
+      "id": "attack6",
+      "level_interval": [
+        60,
+        100
+      ]
+    },
+    {
+      "id": "dexterity55",
+      "level_interval": [
+        60,
+        100
+      ]
+    },
+    {
+      "id": "elemental56",
+      "weapon_set": 1,
+      "level_interval": [
+        60,
+        100
+      ]
+    },
+    {
+      "id": "elemental16",
+      "level_interval": [
+        60,
+        100
+      ]
+    },
+    {
+      "id": "dexterity58",
+      "weapon_set": 2,
+      "level_interval": [
+        60,
+        100
+      ]
+    },
+    {
+      "id": "azmerianimals47",
+      "weapon_set": 2,
+      "level_interval": [
+        60,
+        100
+      ]
+    },
+    {
+      "id": "shock4",
+      "weapon_set": 2,
+      "level_interval": [
+        60,
+        100
+      ]
+    },
+    {
+      "id": "attack2",
+      "level_interval": [
+        60,
+        100
+      ]
+    },
+    {
+      "id": "dexterity82_",
+      "level_interval": [
+        60,
+        100
+      ]
+    },
+    {
+      "id": "dexterity52",
+      "level_interval": [
+        60,
+        100
+      ]
+    },
+    {
+      "id": "elemental26",
+      "level_interval": [
+        60,
+        100
+      ]
+    },
+    {
+      "id": "marks32",
+      "weapon_set": 2,
+      "level_interval": [
+        60,
+        100
+      ]
+    },
+    {
+      "id": "azmerianimals43",
+      "weapon_set": 2,
+      "level_interval": [
+        60,
+        100
+      ]
+    },
+    {
+      "id": "shock15",
+      "weapon_set": 2,
+      "level_interval": [
+        60,
+        100
+      ]
+    },
+    {
+      "id": "attack5",
+      "weapon_set": 1,
+      "level_interval": [
+        60,
+        100
+      ]
+    },
+    {
+      "id": "dexterity81",
+      "weapon_set": 2,
+      "level_interval": [
+        60,
+        100
+      ]
+    },
+    {
+      "id": "movement_speed5",
+      "level_interval": [
+        60,
+        100
+      ]
+    },
+    {
+      "id": "azmerianimals38",
+      "level_interval": [
+        60,
+        100
+      ]
+    },
+    {
+      "id": "dexterity51",
+      "level_interval": [
+        60,
+        100
+      ]
+    },
+    {
+      "id": "elemental27",
+      "level_interval": [
+        60,
+        100
+      ]
+    },
+    {
+      "id": "marks29",
+      "weapon_set": 2,
+      "level_interval": [
+        60,
+        100
+      ]
+    },
+    {
+      "id": "marks30",
+      "weapon_set": 2,
+      "level_interval": [
+        60,
+        100
+      ]
+    },
+    {
+      "id": "azmerianimals44",
+      "weapon_set": 2,
+      "level_interval": [
+        60,
+        100
+      ]
+    },
+    {
+      "id": "shock6",
+      "weapon_set": 2,
+      "level_interval": [
+        60,
+        100
+      ]
+    },
+    {
+      "id": "attributes9",
+      "weapon_set": 2,
+      "level_interval": [
+        60,
+        100
+      ]
+    },
+    {
+      "id": "movement_speed4",
+      "level_interval": [
+        60,
+        100
+      ]
+    },
+    {
+      "id": "azmerianimals40",
+      "level_interval": [
+        60,
+        100
+      ]
+    },
+    {
+      "id": "attributes10",
+      "level_interval": [
+        60,
+        100
+      ]
+    },
+    {
+      "id": "heralds12_",
+      "weapon_set": 1,
+      "level_interval": [
+        60,
+        100
+      ]
+    },
+    {
+      "id": "dexterity40",
+      "level_interval": [
+        60,
+        100
+      ]
+    },
+    {
+      "id": "azmerianimals48",
+      "weapon_set": 2,
+      "level_interval": [
+        60,
+        100
+      ]
+    },
+    {
+      "id": "marks16",
+      "weapon_set": 2,
+      "level_interval": [
+        60,
+        100
+      ]
+    },
+    {
+      "id": "movement_speed9",
+      "level_interval": [
+        60,
+        100
+      ]
+    },
+    {
+      "id": "azmerianimals41",
+      "level_interval": [
+        60,
+        100
+      ]
+    },
+    {
+      "id": "dexterity50",
+      "level_interval": [
+        60,
+        100
+      ]
+    },
+    {
+      "id": "cold44",
+      "level_interval": [
+        60,
+        100
+      ]
+    },
+    {
+      "id": "heralds10",
+      "weapon_set": 1,
+      "level_interval": [
+        60,
+        100
+      ]
+    },
+    {
+      "id": "dexterity39",
+      "level_interval": [
+        60,
+        100
+      ]
+    },
+    {
+      "id": "cold50",
+      "weapon_set": 1,
+      "level_interval": [
+        60,
+        100
+      ]
+    },
+    {
+      "id": "marks5_",
+      "weapon_set": 2,
+      "level_interval": [
+        60,
+        100
+      ]
+    },
+    {
+      "id": "azmerianimals42",
+      "level_interval": [
+        60,
+        100
+      ]
+    },
+    {
+      "id": "bow19",
+      "weapon_set": 1,
+      "level_interval": [
+        60,
+        100
+      ]
+    },
+    {
+      "id": "cold45",
+      "level_interval": [
+        60,
+        100
+      ]
+    },
+    {
+      "id": "heralds16_",
+      "weapon_set": 1,
+      "level_interval": [
+        60,
+        100
+      ]
+    },
+    {
+      "id": "dexterity11",
+      "level_interval": [
+        60,
+        100
+      ]
+    },
+    {
+      "id": "attack_speed57",
+      "level_interval": [
+        60,
+        100
+      ]
+    },
+    {
+      "id": "cold49",
+      "weapon_set": 1,
+      "level_interval": [
+        60,
+        100
+      ]
+    },
+    {
+      "id": "marks13",
+      "weapon_set": 2,
+      "level_interval": [
+        60,
+        100
+      ]
+    },
+    {
+      "id": "marks14",
+      "weapon_set": 2,
+      "level_interval": [
+        60,
+        100
+      ]
+    },
+    {
+      "id": "marks15",
+      "weapon_set": 2,
+      "level_interval": [
+        60,
+        100
+      ]
+    },
+    {
+      "id": "bow20",
+      "weapon_set": 1,
+      "level_interval": [
+        60,
+        100
+      ]
+    },
+    {
+      "id": "cold48",
+      "level_interval": [
+        60,
+        100
+      ]
+    },
+    {
+      "id": "dexterity10",
+      "level_interval": [
+        60,
+        100
+      ]
+    },
+    {
+      "id": "attack13_",
+      "weapon_set": 1,
+      "level_interval": [
+        60,
+        100
+      ]
+    },
+    {
+      "id": "attack_speed58",
+      "level_interval": [
+        60,
+        100
+      ]
+    },
+    {
+      "id": "cold51",
+      "weapon_set": 1,
+      "level_interval": [
+        60,
+        100
+      ]
+    },
+    {
+      "id": "marks17",
+      "weapon_set": 2,
+      "level_interval": [
+        60,
+        100
+      ],
+      "additional_text": "Remember to remove the node here"
+    },
+    {
+      "id": "marks12",
+      "weapon_set": 2,
+      "level_interval": [
+        60,
+        100
+      ]
+    },
+    {
+      "id": "bow21",
+      "weapon_set": 1,
+      "level_interval": [
+        60,
+        100
+      ]
+    },
+    {
+      "id": "dexterity5",
+      "level_interval": [
+        60,
+        100
+      ]
+    },
+    {
+      "id": "attack14",
+      "weapon_set": 1,
+      "level_interval": [
+        60,
+        100
+      ]
+    },
+    {
+      "id": "attack_speed60_",
+      "level_interval": [
+        60,
+        100
+      ]
+    },
+    {
+      "id": "bow23",
+      "weapon_set": 1,
+      "level_interval": [
+        60,
+        100
+      ]
+    },
+    {
+      "id": "cold29",
+      "level_interval": [
+        60,
+        100
+      ]
+    },
+    {
+      "id": "dexterity6",
+      "level_interval": [
+        60,
+        100
+      ]
+    },
+    {
+      "id": "attack16",
+      "weapon_set": 1,
+      "level_interval": [
+        60,
+        100
+      ]
+    },
+    {
+      "id": "cold39__",
+      "level_interval": [
+        60,
+        100
+      ]
+    },
+    {
+      "id": "attack41__",
+      "weapon_set": 1,
+      "level_interval": [
+        60,
+        100
+      ]
+    },
+    {
+      "id": "cold28",
+      "level_interval": [
+        60,
+        100
+      ]
+    },
+    {
+      "id": "attack42",
+      "weapon_set": 1,
+      "level_interval": [
+        60,
+        100
+      ]
+    },
+    {
+      "id": "shadow_monk_notable2",
+      "level_interval": [
+        60,
+        100
+      ]
+    },
+    {
+      "id": "attack43",
+      "weapon_set": 1,
+      "level_interval": [
+        60,
+        100
+      ]
+    },
+    {
+      "id": "evasion_and_energy_shield27",
+      "level_interval": [
+        60,
+        100
+      ]
+    },
+    {
+      "id": "attack45",
+      "weapon_set": 1,
+      "level_interval": [
+        60,
+        100
+      ],
+      "additional_text": "Change to weapon set 1"
+    },
+    {
+      "id": "evasion_and_energy_shield35_",
+      "level_interval": [
+        60,
+        100
+      ]
+    },
+    {
+      "id": "evasion_and_energy_shield26",
+      "level_interval": [
+        60,
+        100
+      ]
+    },
+    {
+      "id": "shadow_monk_notable1",
+      "level_interval": [
+        60,
+        100
+      ]
+    },
+    {
+      "id": "attack_speed46",
+      "level_interval": [
+        60,
+        100
+      ]
+    },
+    {
+      "id": "attack_speed37",
+      "level_interval": [
+        60,
+        100
+      ]
+    },
+    {
+      "id": "AscendancyRanger1Small3",
+      "level_interval": [
+        60,
+        100
+      ]
+    },
+    {
+      "id": "AscendancyRanger1Notable3",
+      "level_interval": [
+        60,
+        100
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "id": "Metadata/Items/Gem/SkillGemPlayerDefaultBow",
+      "additional_text": "<orange>{Jeweller's orb priority}: Snipe -> Ice Shot -> Freezing Mark -> Herald of Ice\n<blue>{Quality Priority}: Freezing Mark -> Herald of Ice -> Snipe"
+    },
+    {
+      "id": "Metadata/Items/Gems/SkillGemLightningArrow",
+      "level_interval": [
+        1,
+        23
+      ],
+      "support_skills": [
+        {
+          "id": "Metadata/Items/Gems/SupportGemMartialTempo"
+        },
+        {
+          "id": "Metadata/Items/Gems/SupportGemPrimalArmament"
+        }
+      ]
+    },
+    {
+      "id": "Metadata/Items/Gem/SkillGemLightningRod",
+      "level_interval": [
+        1,
+        23
+      ],
+      "support_skills": [
+        {
+          "id": "Metadata/Items/Gems/SupportGemConcentratedEffect"
+        },
+        {
+          "id": "Metadata/Items/Gems/SupportGemPrimalArmament"
+        }
+      ]
+    },
+    {
+      "id": "Metadata/Items/Gems/SkillGemFrostBomb",
+      "level_interval": [
+        1,
+        23
+      ]
+    },
+    {
+      "id": "Metadata/Items/Gems/SkillGemWolfPounce",
+      "level_interval": [
+        1,
+        23
+      ]
+    },
+    {
+      "id": "Metadata/Items/Gems/SkillGemHeraldOfThunder",
+      "level_interval": [
+        1,
+        23
+      ],
+      "support_skills": [
+        {
+          "id": "Metadata/Items/Gems/SupportGemConcentratedEffect"
+        },
+        {
+          "id": "Metadata/Items/Gems/SupportGemPrimalArmament"
+        }
+      ]
+    },
+    {
+      "id": "Metadata/Items/Gem/SkillGemIceTippedArrows",
+      "level_interval": [
+        1,
+        23
+      ],
+      "support_skills": [
+        {
+          "id": "Metadata/Items/Gems/SupportGemMagnifiedEffect"
+        }
+      ]
+    },
+    {
+      "id": "Metadata/Items/Gems/SkillGemBarrage",
+      "level_interval": [
+        1,
+        23
+      ]
+    },
+    {
+      "id": "Metadata/Items/Gems/SkillGemLightningArrow",
+      "level_interval": [
+        24,
+        30
+      ],
+      "support_skills": [
+        {
+          "id": "Metadata/Items/Gems/SupportGemMartialTempo"
+        },
+        {
+          "id": "Metadata/Items/Gems/SupportGemPrimalArmamentTwo"
+        }
+      ]
+    },
+    {
+      "id": "Metadata/Items/Gem/SkillGemSnipe",
+      "level_interval": [
+        24,
+        30
+      ],
+      "support_skills": [
+        {
+          "id": "Metadata/Items/Gems/SupportGemConcentratedEffect"
+        },
+        {
+          "id": "Metadata/Items/Gems/SupportGemWindowOfOpportunity"
+        },
+        {
+          "id": "Metadata/Items/Gems/SupportGemPrimalArmamentTwo"
+        }
+      ],
+      "additional_text": "Get Concentrated Area from Lightning Rod"
+    },
+    {
+      "id": "Metadata/Items/Gem/SkillGemFreezingSalvo",
+      "level_interval": [
+        24,
+        30
+      ],
+      "support_skills": [
+        {
+          "id": "Metadata/Items/Gems/SupportGemGlaciation"
+        },
+        {
+          "id": "Metadata/Items/Gems/SupportGemConcentratedEffect"
+        }
+      ]
+    },
+    {
+      "id": "Metadata/Items/Gem/SkillGemIceTippedArrows",
+      "level_interval": [
+        24,
+        30
+      ],
+      "support_skills": [
+        {
+          "id": "Metadata/Items/Gems/SupportGemMagnifiedEffect"
+        },
+        {
+          "id": "Metadata/Items/Gems/SupportGemPrimalArmamentTwo"
+        }
+      ],
+      "additional_text": "Get Elemental Armament from Lightning Rod"
+    },
+    {
+      "id": "Metadata/Items/Gems/SkillGemBarrage",
+      "level_interval": [
+        24,
+        30
+      ]
+    },
+    {
+      "id": "Metadata/Items/Gems/SkillGemWolfPounce",
+      "level_interval": [
+        24,
+        30
+      ]
+    },
+    {
+      "id": "Metadata/Items/Gems/SkillGemHeraldOfThunder",
+      "level_interval": [
+        24,
+        30
+      ],
+      "support_skills": [
+        {
+          "id": "Metadata/Items/Gems/SupportGemConcentratedEffect"
+        },
+        {
+          "id": "Metadata/Items/Gems/SupportGemPrimalArmamentTwo"
+        }
+      ]
+    },
+    {
+      "id": "Metadata/Items/Gem/SkillGemIceShot",
+      "level_interval": [
+        31,
+        41
+      ],
+      "support_skills": [
+        {
+          "id": "Metadata/Items/Gems/SupportGemMartialTempoTwo"
+        },
+        {
+          "id": "Metadata/Items/Gems/SupportGemPrimalArmamentTwo"
+        },
+        {
+          "id": "Metadata/Items/Gems/SupportGemIceBite"
+        }
+      ],
+      "additional_text": "Get Rapid Attacks and Elemental Armament from Lightning Arrow"
+    },
+    {
+      "id": "Metadata/Items/Gem/SkillGemFreezingMark",
+      "level_interval": [
+        31,
+        41
+      ],
+      "support_skills": [
+        {
+          "id": "Metadata/Items/Gems/SupportGemPersistence"
+        },
+        {
+          "id": "Metadata/Items/Gems/SupportGemMarkOfSiphoning"
+        },
+        {
+          "id": "Metadata/Items/Gems/SupportGemEternalMark"
+        }
+      ]
+    },
+    {
+      "id": "Metadata/Items/Gem/SkillGemSnipe",
+      "level_interval": [
+        31,
+        41
+      ],
+      "support_skills": [
+        {
+          "id": "Metadata/Items/Gems/SupportGemConcentratedEffect"
+        },
+        {
+          "id": "Metadata/Items/Gems/SupportGemWindowOfOpportunity"
+        },
+        {
+          "id": "Metadata/Items/Gems/SupportGemPrimalArmamentTwo"
+        }
+      ]
+    },
+    {
+      "id": "Metadata/Items/Gem/SkillGemFreezingSalvo",
+      "level_interval": [
+        31,
+        41
+      ],
+      "support_skills": [
+        {
+          "id": "Metadata/Items/Gems/SupportGemGlaciation"
+        },
+        {
+          "id": "Metadata/Items/Gems/SupportGemConcentratedEffect"
+        }
+      ]
+    },
+    {
+      "id": "Metadata/Items/Gem/SkillGemIceTippedArrows",
+      "level_interval": [
+        31,
+        41
+      ],
+      "support_skills": [
+        {
+          "id": "Metadata/Items/Gems/SupportGemMagnifiedEffect"
+        },
+        {
+          "id": "Metadata/Items/Gems/SupportGemPrimalArmamentTwo"
+        }
+      ]
+    },
+    {
+      "id": "Metadata/Items/Gems/SkillGemBarrage",
+      "level_interval": [
+        31,
+        41
+      ],
+      "support_skills": [
+        {
+          "id": "Metadata/Items/Gems/SupportGemIngenuity"
+        }
+      ]
+    },
+    {
+      "id": "Metadata/Items/Gems/SkillGemHeraldOfIce",
+      "level_interval": [
+        31,
+        41
+      ],
+      "support_skills": [
+        {
+          "id": "Metadata/Items/Gems/SupportGemMagnifiedEffect"
+        },
+        {
+          "id": "Metadata/Items/Gems/SupportGemPrimalArmamentTwo"
+        },
+        {
+          "id": "Metadata/Items/Gems/SupportGemElementalFocus"
+        }
+      ],
+      "additional_text": "Elemental Armament from Herald of Thunder"
+    },
+    {
+      "id": "Metadata/Items/Gem/SkillGemCombatFrenzy",
+      "level_interval": [
+        31,
+        41
+      ]
+    },
+    {
+      "id": "Metadata/Items/Gem/SkillGemIceShot",
+      "level_interval": [
+        42,
+        59
+      ],
+      "support_skills": [
+        {
+          "id": "Metadata/Items/Gems/SupportGemMartialTempoTwo"
+        },
+        {
+          "id": "Metadata/Items/Gems/SupportGemPrimalArmamentTwo"
+        },
+        {
+          "id": "Metadata/Items/Gems/SupportGemIceBite"
+        },
+        {
+          "id": "Metadata/Items/Gems/SupportGemFork"
+        }
+      ]
+    },
+    {
+      "id": "Metadata/Items/Gem/SkillGemFreezingMark",
+      "level_interval": [
+        42,
+        59
+      ],
+      "support_skills": [
+        {
+          "id": "Metadata/Items/Gems/SupportGemChargedMark"
+        },
+        {
+          "id": "Metadata/Items/Gems/SupportGemPersistenceTwo"
+        },
+        {
+          "id": "Metadata/Items/Gems/SupportGemEternalMark"
+        }
+      ]
+    },
+    {
+      "id": "Metadata/Items/Gem/SkillGemSnipe",
+      "level_interval": [
+        42,
+        59
+      ],
+      "support_skills": [
+        {
+          "id": "Metadata/Items/Gems/SupportGemConcentratedEffect"
+        },
+        {
+          "id": "Metadata/Items/Gems/SupportGemWindowOfOpportunity"
+        },
+        {
+          "id": "Metadata/Items/Gems/SupportGemPrimalArmamentTwo"
+        },
+        {
+          "id": "Metadata/Items/Gems/SupportGemElementalFocus"
+        }
+      ]
+    },
+    {
+      "id": "Metadata/Items/Gem/SkillGemIceTippedArrows",
+      "level_interval": [
+        42,
+        59
+      ],
+      "support_skills": [
+        {
+          "id": "Metadata/Items/Gems/SupportGemPrimalArmamentTwo"
+        },
+        {
+          "id": "Metadata/Items/Gems/SupportGemMagnifiedEffect"
+        },
+        {
+          "id": "Metadata/Items/Gem/SupportGemExpedite"
+        }
+      ]
+    },
+    {
+      "id": "Metadata/Items/Gems/SkillGemBarrage",
+      "level_interval": [
+        42,
+        59
+      ],
+      "support_skills": [
+        {
+          "id": "Metadata/Items/Gems/SupportGemIngenuity"
+        },
+        {
+          "id": "Metadata/Items/Gems/SupportGemArcaneTempoTwo"
+        }
+      ]
+    },
+    {
+      "id": "Metadata/Items/Gems/SkillGemHeraldOfIce",
+      "level_interval": [
+        42,
+        59
+      ],
+      "support_skills": [
+        {
+          "id": "Metadata/Items/Gems/SupportGemMagnifiedEffect"
+        },
+        {
+          "id": "Metadata/Items/Gems/SupportGemPrimalArmamentTwo"
+        },
+        {
+          "id": "Metadata/Items/Gems/SupportGemElementalFocus"
+        }
+      ]
+    },
+    {
+      "id": "Metadata/Items/Gem/SkillGemCombatFrenzy",
+      "level_interval": [
+        42,
+        59
+      ],
+      "support_skills": [
+        {
+          "id": "Metadata/Items/Gems/SupportGemProfusion"
+        }
+      ]
+    },
+    {
+      "id": "Metadata/Items/Gem/SkillGemWindDancer",
+      "level_interval": [
+        42,
+        59
+      ],
+      "support_skills": [
+        {
+          "id": "Metadata/Items/Gems/SupportGemBludgeon"
+        }
+      ]
+    },
+    {
+      "id": "Metadata/Items/Gem/SkillGemTornadoShot",
+      "level_interval": [
+        42,
+        59
+      ],
+      "support_skills": [
+        {
+          "id": "Metadata/Items/Gems/SupportGemPersistenceTwo"
+        },
+        {
+          "id": "Metadata/Items/Gems/SupportGemOverabundanceTwo"
+        },
+        {
+          "id": "Metadata/Items/Gems/SupportGemMartialTempoTwo"
+        }
+      ]
+    }
+  ],
+  "inventory_slots": []
+}
