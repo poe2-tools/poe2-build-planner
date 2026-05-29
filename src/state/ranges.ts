@@ -10,7 +10,6 @@ export const DEFAULT_ID = 'default';
 
 export interface RangeBase {
   id: string;
-  name: string;
   interval: LevelInterval | null; // null = default range (omit level_interval on export)
   isDefault: boolean;
 }
@@ -45,6 +44,11 @@ export function intervalLabel(iv: LevelInterval | null): string {
   return iv ? `${iv[0]}–${iv[1]}` : 'Default';
 }
 
+/** Human label for a range: default shows its implicit 1-100 span. */
+export function rangeLabel(r: RangeBase): string {
+  return r.isDefault ? 'Default (1-100)' : `${r.interval![0]}–${r.interval![1]}`;
+}
+
 /** Default first, then ascending by `from`, ties by `to`. */
 export function compareRanges(a: RangeBase, b: RangeBase): number {
   if (a.isDefault) return b.isDefault ? 0 : -1;
@@ -70,13 +74,13 @@ type RangeMap<T extends RangeBase> = Map<string, T>;
 function ensureRange<T extends RangeBase>(
   groups: RangeMap<T>,
   iv: LevelInterval | null,
-  make: (id: string, name: string, interval: LevelInterval | null, isDefault: boolean) => T,
+  make: (id: string, interval: LevelInterval | null, isDefault: boolean) => T,
 ): T {
   const key = intervalKey(iv);
   let r = groups.get(key);
   if (!r) {
     const isDefault = key === 'default';
-    r = make(isDefault ? DEFAULT_ID : nextRangeId(), isDefault ? 'Default' : intervalLabel(iv), isDefault ? null : iv, isDefault);
+    r = make(isDefault ? DEFAULT_ID : nextRangeId(), isDefault ? null : iv, isDefault);
     groups.set(key, r);
   }
   return r;
@@ -90,36 +94,36 @@ export function buildToRanges(
   // passives
   const pg: RangeMap<PassiveRange> = new Map();
   for (const p of build.passives) {
-    const r = ensureRange(pg, p.level_interval ?? null, (id, name, interval, isDefault) => ({
-      id, name, interval, isDefault, allocated: new Set<number>(), entries: new Map<number, Passive>(),
+    const r = ensureRange(pg, p.level_interval ?? null, (id, interval, isDefault) => ({
+      id, interval, isDefault, allocated: new Set<number>(), entries: new Map<number, Passive>(),
     }));
     const node = tree.nodesById.get(p.id);
     if (!node) continue;
     r.allocated.add(node.skill);
     r.entries.set(node.skill, stripInterval(p));
   }
-  ensureRange(pg, null, (id, name, interval, isDefault) => ({
-    id, name, interval, isDefault, allocated: new Set<number>(), entries: new Map<number, Passive>(),
+  ensureRange(pg, null, (id, interval, isDefault) => ({
+    id, interval, isDefault, allocated: new Set<number>(), entries: new Map<number, Passive>(),
   }));
   if (startSkill !== null) for (const r of pg.values()) r.allocated.add(startSkill);
 
   // skills
   const sg: RangeMap<SkillRange> = new Map();
   for (const sk of build.skills) {
-    ensureRange(sg, sk.level_interval ?? null, (id, name, interval, isDefault) => ({
-      id, name, interval, isDefault, skills: [],
+    ensureRange(sg, sk.level_interval ?? null, (id, interval, isDefault) => ({
+      id, interval, isDefault, skills: [],
     })).skills.push(stripInterval(sk));
   }
-  ensureRange(sg, null, (id, name, interval, isDefault) => ({ id, name, interval, isDefault, skills: [] }));
+  ensureRange(sg, null, (id, interval, isDefault) => ({ id, interval, isDefault, skills: [] }));
 
   // items
   const ig: RangeMap<ItemRange> = new Map();
   for (const it of build.items) {
-    ensureRange(ig, it.level_interval ?? null, (id, name, interval, isDefault) => ({
-      id, name, interval, isDefault, items: [],
+    ensureRange(ig, it.level_interval ?? null, (id, interval, isDefault) => ({
+      id, interval, isDefault, items: [],
     })).items.push(stripInterval(it));
   }
-  ensureRange(ig, null, (id, name, interval, isDefault) => ({ id, name, interval, isDefault, items: [] }));
+  ensureRange(ig, null, (id, interval, isDefault) => ({ id, interval, isDefault, items: [] }));
 
   return {
     passiveRanges: [...pg.values()].sort(compareRanges),

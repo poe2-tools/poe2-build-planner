@@ -25,7 +25,7 @@ function edgeColor(weaponSets: Map<number, number> | undefined, a: number, b: nu
 }
 const DIM_ALPHA = 0.35;
 const ICON_SCALE = 1.4; // icon diameter as a multiple of node radius; drawn behind the frame
-const BG_ART_ALPHA = 0.5;
+const BG_ART_ALPHA = 0.3;
 
 export interface DrawParams {
   tree: TreeData;
@@ -34,6 +34,7 @@ export interface DrawParams {
   size: Size;
   allocated: Set<number>;
   startSkill: number | null;
+  blocked?: Set<number>;
   hover: number | null;
   skills: Atlas;
   frames: Atlas;
@@ -46,6 +47,7 @@ export interface DrawParams {
 
 export function drawTree(ctx: CanvasRenderingContext2D, p: DrawParams): void {
   const { tree, index, vp, size, allocated, startSkill, hover, skills, frames, dimmed, ascendancy, background, backgroundKey, weaponSets } = p;
+  const blocked = p.blocked ?? new Set<number>();
   const mainSet = new Set(tree.mainSkills);
 
   ctx.fillStyle = BG;
@@ -92,7 +94,7 @@ export function drawTree(ctx: CanvasRenderingContext2D, p: DrawParams): void {
   for (const skill of visible) {
     const n = tree.nodesBySkill.get(skill)!;
     const kind = nodeKind(n);
-    const state = visualState(tree, allocated, start, skill);
+    const state = visualState(tree, allocated, start, skill, blocked);
     const s = worldToScreen(vp, size, n.x, n.y);
     const r = NODE_WORLD_RADIUS[kind] * vp.zoom;
     ctx.globalAlpha = dimmed?.has(skill) ? DIM_ALPHA : 1;
@@ -101,6 +103,15 @@ export function drawTree(ctx: CanvasRenderingContext2D, p: DrawParams): void {
       ctx.fillStyle = DOT_COLOR[state];
       ctx.beginPath();
       ctx.arc(s.sx, s.sy, Math.max(1.2, r * 0.5), 0, Math.PI * 2);
+      ctx.fill();
+      continue;
+    }
+
+    // Class-start nodes: a small neutral dot, no icon and no border frame.
+    if (kind === 'classStart') {
+      ctx.fillStyle = '#6a6e82';
+      ctx.beginPath();
+      ctx.arc(s.sx, s.sy, Math.max(2, r * 0.35), 0, Math.PI * 2);
       ctx.fill();
       continue;
     }
@@ -181,7 +192,7 @@ export function drawTree(ctx: CanvasRenderingContext2D, p: DrawParams): void {
     for (const nl of ascendancy.nodes) {
       const n = tree.nodesBySkill.get(nl.skill)!;
       const kind = nodeKind(n);
-      const state = visualState(tree, allocated, start2, nl.skill);
+      const state = visualState(tree, allocated, start2, nl.skill, blocked);
       const s = worldToScreen(vp, size, nl.wx, nl.wy);
       const r = nl.wr * vp.zoom;
       const iconKey = iconFrameKey(n);

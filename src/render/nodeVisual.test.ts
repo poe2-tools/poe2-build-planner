@@ -27,4 +27,7 @@ describe('visualState', () => {
   it('is unallocated for a node not adjacent to the allocated set', () => {
     expect(visualState(tree, new Set([0]), 0, 2)).toBe('unallocated');
   });
+  it('is not canAllocate for a neighbour that is blocked', () => {
+    expect(visualState(tree, new Set([0, 1]), 0, 2, new Set([2]))).toBe('unallocated');
+  });
 });

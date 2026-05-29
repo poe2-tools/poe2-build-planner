@@ -1,5 +1,5 @@
 import type { CSSProperties } from 'react';
-import { useStore } from '../state';
+import { useStore, rangeLabel } from '../state';
 import type { Domain } from '../state';
 import IntervalInputs from './IntervalInputs';
 
@@ -18,7 +18,6 @@ export default function RangeBar({ domain }: Props) {
   const addRange = useStore((s) => s.addRange);
   const duplicateRange = useStore((s) => s.duplicateRange);
   const deleteRange = useStore((s) => s.deleteRange);
-  const renameRange = useStore((s) => s.renameRange);
   const setRangeInterval = useStore((s) => s.setRangeInterval);
   const setActiveRange = useStore((s) => s.setActiveRange);
 
@@ -29,7 +28,7 @@ export default function RangeBar({ domain }: Props) {
       <select value={activeId} onChange={(e) => setActiveRange(domain, e.target.value)}>
         {ranges.map((r) => (
           <option key={r.id} value={r.id}>
-            {r.name}{r.interval ? ` (${r.interval[0]}–${r.interval[1]})` : ''}
+            {rangeLabel(r)}
           </option>
         ))}
       </select>
@@ -37,12 +36,6 @@ export default function RangeBar({ domain }: Props) {
       <button onClick={() => duplicateRange(domain, activeId)} title="Duplicate this range">⧉</button>
       {active && !active.isDefault && (
         <>
-          <input
-            value={active.name}
-            onChange={(e) => renameRange(domain, activeId, e.target.value)}
-            style={{ width: 110 }}
-            placeholder="Range name"
-          />
           <IntervalInputs
             value={active.interval ?? undefined}
             onChange={(iv) => setRangeInterval(domain, activeId, iv ?? [1, 10])}

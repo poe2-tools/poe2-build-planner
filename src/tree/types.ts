@@ -18,6 +18,8 @@ export interface TreeNode {
   isAscendancyStart?: boolean;
   ascendancyId?: string;
   classStartIndex?: number[];
+  isMultipleChoiceOption?: boolean;
+  multipleChoiceParent?: number;
 }
 
 export type NodeKind =
@@ -48,6 +50,8 @@ export interface TreeData {
   nodesBySkill: Map<number, TreeNode>;
   nodesById: Map<string, TreeNode>;
   adjacency: Map<number, number[]>;
+  /** Allocation-only graph: spurious cross-class / ascendancy-bridge edges removed. */
+  navAdjacency?: Map<number, number[]>;
   classes: TreeClass[];
   classStartNodes: TreeNode[];
   bounds: { minX: number; minY: number; maxX: number; maxY: number };

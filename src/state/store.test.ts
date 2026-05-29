@@ -9,6 +9,7 @@ const tree = indexTree(JSON.parse(readFileSync('Skill Trees/0.5.0/data.json', 'u
 const buildText = readFileSync('Builds/sample.build', 'utf8');
 const WARRIOR = classIndexForAscendancy(tree, 'Warrior1'); // the sample build's class
 const WITCH = classIndexForAscendancy(tree, 'Witch1');
+const RANGER3 = classIndexForAscendancy(tree, 'Ranger3'); // Pathfinder — has a multiple-choice group
 
 function freshLoad() {
   const build = parseBuild(buildText);
@@ -70,8 +71,10 @@ describe('clickNode', () => {
     useStore.getState().setTree(tree);
     useStore.getState().setClass(WARRIOR);
     const start = useStore.getState().startSkill!;
-    // A node adjacent to the start allocates as a single-node path, so it's a clean leaf.
-    const neighbour = (tree.adjacency.get(start) ?? []).find((n) => n !== start)!;
+    // A navigable main neighbour adjacent to the start allocates as a single-node path (clean leaf).
+    const neighbour = (tree.navAdjacency!.get(start) ?? []).find(
+      (n) => n !== start && tree.nodesBySkill.get(n)!.ascendancyId === undefined,
+    )!;
     useStore.getState().clickNode(neighbour);
     const before = activePassive().allocated.size;
     expect(activePassive().allocated.has(neighbour)).toBe(true);
@@ -94,6 +97,23 @@ describe('clickNode', () => {
     expect(activePassive().entries.has(skill)).toBe(true);
     useStore.getState().clickNode(skill);
     expect(activePassive().entries.has(skill)).toBe(false);
+  });
+
+  it('enforces single choice: allocating a second multiple-choice option removes the first', () => {
+    const PARENT = 57141; // Brew Concoction (Ranger3 multiple-choice parent)
+    const FIRST = 9710; // Bleeding Concoction
+    const SECOND = 18940; // Shattering Concoction
+    useStore.getState().setTree(tree);
+    useStore.getState().setClass(RANGER3);
+    useStore.getState().setAscendancy('Ranger3'); // un-block the Ranger3 ascendancy nodes
+    useStore.getState().clickNode(PARENT); // allocate the parent via a real connecting path
+    useStore.getState().clickNode(FIRST); // first option
+    expect(activePassive().allocated.has(FIRST)).toBe(true);
+    useStore.getState().clickNode(SECOND); // second option must displace the first
+    const a = activePassive().allocated;
+    expect(a.has(SECOND)).toBe(true);
+    expect(a.has(FIRST)).toBe(false); // sibling option removed
+    expect(activePassive().entries.has(FIRST)).toBe(false); // its entry pruned too
   });
 });
 
@@ -161,6 +181,16 @@ describe('item editing (active range)', () => {
     useStore.getState().clearItem('BodyArmour');
     expect(activeItem().items.find((x) => x.inventory_id === 'BodyArmour')).toBeUndefined();
   });
+
+  it('round-trips a unique_name and removes it when cleared', () => {
+    freshLoad();
+    useStore.getState().setItem('Amulet1', { uniqueName: 'Astramentis' });
+    expect(activeItem().items.find((x) => x.inventory_id === 'Amulet1')!.unique_name).toBe('Astramentis');
+    const out = parseBuild(useStore.getState().serialize());
+    expect(out.items.find((it) => it.inventory_id === 'Amulet1')!.unique_name).toBe('Astramentis');
+    useStore.getState().setItem('Amulet1', {});
+    expect(activeItem().items.find((x) => x.inventory_id === 'Amulet1')!.unique_name).toBeUndefined();
+  });
 });
 
 describe('meta editing', () => {
@@ -213,14 +243,12 @@ describe('range management', () => {
     expect(useStore.getState().activeSkillId).toBe(DEFAULT_ID);
   });
 
-  it('renames a range and sets a non-default interval (no-op on default)', () => {
+  it('sets a non-default interval (no-op on default)', () => {
     freshLoad();
     useStore.getState().addRange('items');
     const id = useStore.getState().activeItemId;
-    useStore.getState().renameRange('items', id, 'Maps');
     useStore.getState().setRangeInterval('items', id, [60, 100]);
     const r = useStore.getState().itemRanges.find((x) => x.id === id)!;
-    expect(r.name).toBe('Maps');
     expect(r.interval).toEqual([60, 100]);
     useStore.getState().setRangeInterval('items', DEFAULT_ID, [1, 5]);
     expect(useStore.getState().itemRanges.find((x) => x.isDefault)!.interval).toBeNull();

@@ -2,7 +2,7 @@ import type { CSSProperties } from 'react';
 import { useStore } from '../state';
 import type { WeaponSet } from '../state';
 
-const OPTIONS: [WeaponSet, string][] = [[0, 'Shared'], [1, 'Set 1'], [2, 'Set 2']];
+const OPTIONS: [WeaponSet, string][] = [[0, 'Default'], [1, 'Weapon Set 1'], [2, 'Weapon Set 2']];
 const row: CSSProperties = { display: 'flex', gap: 4, marginTop: 4 };
 
 export default function WeaponSetToggle() {

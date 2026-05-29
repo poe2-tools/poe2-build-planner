@@ -1,6 +1,7 @@
 import type { CSSProperties } from 'react';
 import { useStore } from '../state';
 import RangeBar from './RangeBar';
+import MarkupField from './MarkupField';
 
 // inventory_id values follow the official format (suffixed, e.g. Helm1 / Ring1 / Ring2),
 // matching the GGG docs sample (Weapon1, BodyArmour1, Helm1, Gloves1, Boots1, Belt1, Ring1, Ring2, Amulet1).
@@ -26,18 +27,6 @@ const card: CSSProperties = {
   background: '#e8e9ee', color: '#1b1d24', border: '1px solid #c4c7d2', borderRadius: 6, padding: 8, marginBottom: 8,
   display: 'flex', flexDirection: 'column', gap: 4,
 };
-const textarea: CSSProperties = { width: '100%', minHeight: 48, resize: 'vertical', font: '12px sans-serif' };
-
-function splitText(text: string | undefined): { base: string; mods: string } {
-  if (!text) return { base: '', mods: '' };
-  const nl = text.indexOf('\n');
-  if (nl < 0) return { base: text, mods: '' };
-  return { base: text.slice(0, nl), mods: text.slice(nl + 1) };
-}
-function joinText(base: string, mods: string): string {
-  if (!base && !mods) return '';
-  return mods ? `${base}\n${mods}` : base;
-}
 
 export default function ItemsPanel() {
   const itemRanges = useStore((s) => s.itemRanges);
@@ -56,9 +45,8 @@ export default function ItemsPanel() {
             <div style={colHead}>{title}</div>
             {slots.map((slot) => {
               const item = items.find((it) => it.inventory_id === slot);
-              const { base, mods } = splitText(item?.additional_text);
-              const update = (nextBase: string, nextMods: string) =>
-                setItem(slot, { additionalText: joinText(nextBase, nextMods) });
+              const onText = (v: string) => setItem(slot, { additionalText: v, uniqueName: item?.unique_name });
+              const onUnique = (v: string) => setItem(slot, { additionalText: item?.additional_text, uniqueName: v });
               return (
                 <div key={slot} style={card}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
@@ -66,16 +54,16 @@ export default function ItemsPanel() {
                     {item && <button onClick={() => clearItem(slot)}>Clear</button>}
                   </div>
                   <input
-                    placeholder="Base item type"
-                    value={base}
-                    onChange={(e) => update(e.target.value, mods)}
+                    placeholder="Unique name"
+                    value={item?.unique_name ?? ''}
+                    onChange={(e) => onUnique(e.target.value)}
                     style={{ width: '100%' }}
                   />
-                  <textarea
-                    placeholder="Mods (one per line)…"
-                    value={mods}
-                    onChange={(e) => update(base, e.target.value)}
-                    style={textarea}
+                  <MarkupField
+                    value={item?.additional_text ?? ''}
+                    onChange={onText}
+                    placeholder="Item description / mods…"
+                    title={`${prettySlot(slot)} — description`}
                   />
                 </div>
               );

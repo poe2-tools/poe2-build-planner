@@ -27,6 +27,7 @@ export default function TreeScreen({ skills, frames }: Props) {
   const activePassiveId = useStore((s) => s.activePassiveId);
   const activeWeaponSet = useStore((s) => s.activeWeaponSet);
   const startSkill = useStore((s) => s.startSkill);
+  const blocked = useStore((s) => s.blocked);
   const clickNode = useStore((s) => s.clickNode);
   const setNodeNote = useStore((s) => s.setNodeNote);
   const ascendancyId = useStore((s) => s.build.ascendancy);
@@ -44,6 +45,7 @@ export default function TreeScreen({ skills, frames }: Props) {
         frames={frames}
         allocated={allocated}
         startSkill={startSkill}
+        blocked={blocked}
         dimmed={dimmed}
         entries={entries}
         onSetNote={setNodeNote}

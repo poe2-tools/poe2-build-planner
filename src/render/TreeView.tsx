@@ -19,6 +19,7 @@ interface Props {
   frames: Atlas;
   allocated: Set<number>;
   startSkill: number | null;
+  blocked: Set<number>;
   dimmed: Set<number>;
   entries: Map<number, Passive>;
   onSetNote: (skill: number, text: string) => void;
@@ -29,7 +30,7 @@ interface Props {
 const HIT_RADIUS_PX = 30;
 const CLICK_SLOP_PX = 5;
 
-export default function TreeView({ tree, skills, frames, allocated, startSkill, dimmed, entries, onSetNote, ascendancyId, onNodeClick }: Props) {
+export default function TreeView({ tree, skills, frames, allocated, startSkill, blocked, dimmed, entries, onSetNote, ascendancyId, onNodeClick }: Props) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const indexRef = useRef<SpatialIndex>(buildSpatialIndex(tree));
   const vpRef = useRef<Viewport>({ x: 0, y: 0, zoom: 0.1 });
@@ -53,8 +54,8 @@ export default function TreeView({ tree, skills, frames, allocated, startSkill, 
   }, [entries]);
 
   // Latest draw inputs + click handler, read by the rAF loop / listeners (refs avoid re-subscribing).
-  const drawRef = useRef({ tree, skills, frames, allocated, startSkill, dimmed, ascendancyId, bgAtlas, bgKey, weaponSets });
-  drawRef.current = { tree, skills, frames, allocated, startSkill, dimmed, ascendancyId, bgAtlas, bgKey, weaponSets };
+  const drawRef = useRef({ tree, skills, frames, allocated, startSkill, blocked, dimmed, ascendancyId, bgAtlas, bgKey, weaponSets });
+  drawRef.current = { tree, skills, frames, allocated, startSkill, blocked, dimmed, ascendancyId, bgAtlas, bgKey, weaponSets };
   const clickRef = useRef(onNodeClick);
   clickRef.current = onNodeClick;
 
@@ -68,7 +69,7 @@ export default function TreeView({ tree, skills, frames, allocated, startSkill, 
   // Any draw-input change requests a repaint.
   useEffect(() => {
     dirtyRef.current = true;
-  }, [tree, skills, frames, allocated, startSkill, dimmed, ascendancyId, bgAtlas, weaponSets]);
+  }, [tree, skills, frames, allocated, startSkill, blocked, dimmed, ascendancyId, bgAtlas, weaponSets]);
 
   // Lazily load the selected class's background-art atlas; clears when no ascendancy.
   useEffect(() => {
@@ -129,7 +130,7 @@ export default function TreeView({ tree, skills, frames, allocated, startSkill, 
         overlayRef.current = overlay;
         drawTree(ctx, {
           tree: d.tree, index: indexRef.current, vp: vpRef.current, size: sizeRef.current,
-          allocated: d.allocated, startSkill: d.startSkill, hover: hoverRef.current,
+          allocated: d.allocated, startSkill: d.startSkill, blocked: d.blocked, hover: hoverRef.current,
           skills: d.skills, frames: d.frames, dimmed: d.dimmed, ascendancy: overlay,
           background: d.bgAtlas, backgroundKey: d.bgKey, weaponSets: d.weaponSets,
         });
@@ -197,7 +198,8 @@ export default function TreeView({ tree, skills, frames, allocated, startSkill, 
       hoverRef.current = hit;
       dirtyRef.current = true;
     }
-    if (hit === null) {
+    // Class-start nodes stay hoverable/clickable but show no tooltip (no name/stats to show).
+    if (hit === null || tree.nodesBySkill.get(hit)?.classStartIndex !== undefined) {
       clearTip();
     } else {
       tipRef.current = hit;

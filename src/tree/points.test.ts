@@ -34,4 +34,14 @@ describe('pointsUsed', () => {
     ]);
     expect(pointsUsed(t, new Set([0, 1, 10, 11, 12]))).toEqual({ main: 1, ascendancy: 2 });
   });
+
+  it('does not count multiple-choice option nodes (the point is spent on the parent)', () => {
+    const t = tree([
+      node(0, { classStartIndex: [0] }),
+      node(10, { ascendancyId: 'Ranger3', isAscendancyStart: true }),
+      node(20, { ascendancyId: 'Ranger3' }), // parent notable: counts
+      node(21, { ascendancyId: 'Ranger3', isMultipleChoiceOption: true, multipleChoiceParent: 20 }),
+    ]);
+    expect(pointsUsed(t, new Set([0, 10, 20, 21]))).toEqual({ main: 0, ascendancy: 1 });
+  });
 });

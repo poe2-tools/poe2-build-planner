@@ -2,7 +2,7 @@ import { create } from 'zustand';
 import type { Build, Item, LevelInterval, SkillSetup } from '../buildfile';
 import { serializeBuild } from '../buildfile';
 import type { TreeData } from '../tree/types';
-import { classIndexForAscendancy, classStartNode } from '../tree/data';
+import { classIndexForAscendancy, classStartNode, blockedNodes, siblingChoices } from '../tree/data';
 import { allocate, deallocate } from '../tree/allocation';
 import type { Gem } from '../gems';
 import type { Domain, WeaponSet, PassiveRange, SkillRange, ItemRange, AnyRange } from './ranges';
@@ -13,6 +13,7 @@ interface State {
   build: Build; // meta + extra only; passives/skills/items are rebuilt from ranges on serialize
   classIndex: number;
   startSkill: number | null;
+  blocked: Set<number>;
   dirty: boolean;
   gems: Map<string, Gem> | null;
 
@@ -35,7 +36,6 @@ interface State {
   addRange: (domain: Domain) => void;
   duplicateRange: (domain: Domain, id: string) => void;
   deleteRange: (domain: Domain, id: string) => void;
-  renameRange: (domain: Domain, id: string, name: string) => void;
   setRangeInterval: (domain: Domain, id: string, interval: LevelInterval | null) => void;
   setActiveRange: (domain: Domain, id: string) => void;
   setActiveWeaponSet: (ws: WeaponSet) => void;
@@ -49,7 +49,7 @@ interface State {
   setSupportInterval: (setupIndex: number, supportIndex: number, interval: LevelInterval | undefined) => void;
   setSkillText: (setupIndex: number, text: string, supportIndex?: number) => void;
 
-  setItem: (inventoryId: string, fields: { additionalText?: string; levelInterval?: LevelInterval }) => void;
+  setItem: (inventoryId: string, fields: { additionalText?: string; uniqueName?: string; levelInterval?: LevelInterval }) => void;
   clearItem: (inventoryId: string) => void;
 
   setMeta: (meta: { name?: string; author?: string; description?: string }) => void;
@@ -61,15 +61,15 @@ const emptyBuild: Build = { name: '', passives: [], skills: [], items: [] };
 function defaultPassiveRange(startSkill: number | null): PassiveRange {
   const allocated = new Set<number>();
   if (startSkill !== null) allocated.add(startSkill);
-  return { id: DEFAULT_ID, name: 'Default', interval: null, isDefault: true, allocated, entries: new Map() };
+  return { id: DEFAULT_ID, interval: null, isDefault: true, allocated, entries: new Map() };
 }
-const defaultSkillRange = (): SkillRange => ({ id: DEFAULT_ID, name: 'Default', interval: null, isDefault: true, skills: [] });
-const defaultItemRange = (): ItemRange => ({ id: DEFAULT_ID, name: 'Default', interval: null, isDefault: true, items: [] });
+const defaultSkillRange = (): SkillRange => ({ id: DEFAULT_ID, interval: null, isDefault: true, skills: [] });
+const defaultItemRange = (): ItemRange => ({ id: DEFAULT_ID, interval: null, isDefault: true, items: [] });
 
 const NEW_INTERVAL: LevelInterval = [1, 10];
 
 function emptyRange(domain: Domain, startSkill: number | null): AnyRange {
-  const base = { id: nextRangeId(), name: 'New range', interval: NEW_INTERVAL, isDefault: false };
+  const base = { id: nextRangeId(), interval: NEW_INTERVAL, isDefault: false };
   if (domain === 'passives') return { ...base, allocated: new Set(startSkill !== null ? [startSkill] : []), entries: new Map() };
   if (domain === 'skills') return { ...base, skills: [] };
   return { ...base, items: [] };
@@ -84,7 +84,7 @@ function cloneSetup(s: SkillSetup): SkillSetup {
 }
 
 function cloneRange(domain: Domain, src: AnyRange): AnyRange {
-  const base = { id: nextRangeId(), name: `${src.name} copy`, interval: src.interval ?? NEW_INTERVAL, isDefault: false };
+  const base = { id: nextRangeId(), interval: src.interval ?? NEW_INTERVAL, isDefault: false };
   if (domain === 'passives') {
     const p = src as PassiveRange;
     return { ...base, allocated: new Set(p.allocated), entries: new Map([...p.entries].map(([k, v]) => [k, { ...v }])) };
@@ -135,6 +135,7 @@ const initial = {
   build: emptyBuild,
   classIndex: -1,
   startSkill: null as number | null,
+  blocked: new Set<number>(),
   dirty: false,
   gems: null as Map<string, Gem> | null,
   passiveRanges: [defaultPassiveRange(null)],
@@ -149,7 +150,7 @@ const initial = {
 export const useStore = create<State>((set, get) => ({
   ...initial,
 
-  reset: () => set({ ...initial, activeWeaponSet: 0, passiveRanges: [defaultPassiveRange(null)], skillRanges: [defaultSkillRange()], itemRanges: [defaultItemRange()] }),
+  reset: () => set({ ...initial, blocked: new Set(), activeWeaponSet: 0, passiveRanges: [defaultPassiveRange(null)], skillRanges: [defaultSkillRange()], itemRanges: [defaultItemRange()] }),
 
   setTree: (tree) => set({ tree }),
   setGems: (gems) => set({ gems }),
@@ -160,11 +161,13 @@ export const useStore = create<State>((set, get) => ({
     const classIndex = build.ascendancy ? classIndexForAscendancy(tree, build.ascendancy) : -1;
     const start = classIndex >= 0 ? classStartNode(tree, classIndex) : undefined;
     const startSkill = start?.skill ?? null;
+    const blocked = blockedNodes(tree, startSkill, build.ascendancy);
     const { passiveRanges, skillRanges, itemRanges } = buildToRanges(build, tree, startSkill);
     set({
       build,
       classIndex,
       startSkill,
+      blocked,
       passiveRanges,
       skillRanges,
       itemRanges,
@@ -176,15 +179,20 @@ export const useStore = create<State>((set, get) => ({
   },
 
   clickNode: (skill) => {
-    const { tree, startSkill, passiveRanges, activePassiveId, activeWeaponSet } = get();
+    const { tree, startSkill, blocked, passiveRanges, activePassiveId, activeWeaponSet } = get();
     if (!tree || startSkill === null) return;
     const range = passiveRanges.find((r) => r.id === activePassiveId);
     if (!range) return;
     const adding = !range.allocated.has(skill);
-    const next = adding
-      ? allocate(tree, range.allocated, startSkill, skill)
-      : deallocate(tree, range.allocated, startSkill, skill);
+    let next = adding
+      ? allocate(tree, range.allocated, startSkill, skill, blocked)
+      : deallocate(tree, range.allocated, startSkill, skill, blocked);
     if (next === range.allocated) return;
+    // Single choice: allocating a multiple-choice option removes any allocated sibling option.
+    if (adding) {
+      const sibs = siblingChoices(tree, skill).filter((s) => next.has(s));
+      for (const sib of sibs) next = deallocate(tree, next, startSkill, sib, blocked);
+    }
     const entries = new Map(range.entries);
     // Deallocation: drop entries for any node no longer allocated.
     for (const s of range.allocated) if (!next.has(s)) entries.delete(s);
@@ -210,6 +218,7 @@ export const useStore = create<State>((set, get) => ({
     set({
       classIndex,
       startSkill,
+      blocked: blockedNodes(tree, startSkill, undefined),
       passiveRanges: [defaultPassiveRange(startSkill)],
       activePassiveId: DEFAULT_ID,
       build: { ...build, ascendancy: undefined },
@@ -217,7 +226,12 @@ export const useStore = create<State>((set, get) => ({
     });
   },
 
-  setAscendancy: (ascendancy) => set((s) => ({ build: { ...s.build, ascendancy }, dirty: true })),
+  setAscendancy: (ascendancy) =>
+    set((s) => ({
+      build: { ...s.build, ascendancy },
+      blocked: s.tree ? blockedNodes(s.tree, s.startSkill, ascendancy) : s.blocked,
+      dirty: true,
+    })),
 
   addRange: (domain) =>
     set((s) => {
@@ -245,12 +259,6 @@ export const useStore = create<State>((set, get) => ({
         const activeId = a === id ? next.find((r) => r.isDefault)?.id ?? next[0].id : a;
         return { list: next, activeId };
       }),
-      dirty: true,
-    })),
-
-  renameRange: (domain, id, name) =>
-    set((s) => ({
-      ...onDomain(s, domain, (list, a) => ({ list: list.map((r) => (r.id === id ? { ...r, name } : r)), activeId: a })),
       dirty: true,
     })),
 
@@ -349,12 +357,14 @@ export const useStore = create<State>((set, get) => ({
       dirty: true,
     })),
 
-  setItem: (inventoryId, { additionalText, levelInterval }) =>
+  setItem: (inventoryId, { additionalText, uniqueName, levelInterval }) =>
     set((s) => ({
       itemRanges: updateActive(s.itemRanges, s.activeItemId, (r) => {
         const items = [...r.items];
         const idx = items.findIndex((it) => it.inventory_id === inventoryId);
         const base: Item = idx >= 0 ? { ...items[idx] } : { inventory_id: inventoryId };
+        if (uniqueName) base.unique_name = uniqueName;
+        else delete base.unique_name;
         if (additionalText) base.additional_text = additionalText;
         else delete base.additional_text;
         if (levelInterval) base.level_interval = levelInterval;

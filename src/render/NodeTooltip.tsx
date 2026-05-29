@@ -1,5 +1,6 @@
 import type { TreeNode } from '../tree/types';
 import { cleanStatText } from './statText';
+import MarkupPreview from '../ui/MarkupPreview';
 
 interface Props {
   node: TreeNode;
@@ -48,7 +49,7 @@ export default function NodeTooltip({ node, x, y, note, weaponSet }: Props) {
     <div style={style}>
       <div style={{ fontWeight: 700, color: '#d9c25a', marginBottom: node.stats.length ? 6 : 0 }}>
         {node.name}
-        {weaponSet ? <span style={badge}>Set {weaponSet}</span> : null}
+        {weaponSet ? <span style={badge}>Weapon Set {weaponSet}</span> : null}
       </div>
       {node.stats.map((s, i) => (
         <div key={i} style={{ color: '#b9c0d0' }}>
@@ -57,7 +58,7 @@ export default function NodeTooltip({ node, x, y, note, weaponSet }: Props) {
       ))}
       {note ? (
         <div style={{ marginTop: 6, paddingTop: 6, borderTop: '1px solid #3a3d4e', color: '#cfcf8a', fontStyle: 'italic' }}>
-          {note}
+          <MarkupPreview text={note} />
         </div>
       ) : null}
     </div>

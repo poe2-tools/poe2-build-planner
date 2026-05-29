@@ -28,9 +28,12 @@ export default function Overlays() {
         Class{' '}
         <select value={classIndex} onChange={(e) => setClass(Number(e.target.value))}>
           <option value={-1} disabled>Select…</option>
-          {tree.classes.map((c, i) => (
-            <option key={i} value={i}>{c.name}</option>
-          ))}
+          {tree.classes
+            .map((c, i) => ({ c, i }))
+            .filter(({ c }) => c.ascendancies.length > 0)
+            .map(({ c, i }) => (
+              <option key={i} value={i}>{c.name}</option>
+            ))}
         </select>
       </label>
       <label>

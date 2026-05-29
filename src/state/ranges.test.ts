@@ -1,11 +1,11 @@
 import { describe, it, expect } from 'vitest';
-import { intervalKey, intervalLabel, compareRanges, DEFAULT_ID } from './ranges';
+import { intervalKey, intervalLabel, rangeLabel, compareRanges, DEFAULT_ID } from './ranges';
 import type { RangeBase } from './ranges';
 import { dimmedByWeaponSet } from './ranges';
 import type { PassiveRange } from './ranges';
 
 const r = (interval: [number, number] | null, isDefault = false): RangeBase =>
-  ({ id: isDefault ? DEFAULT_ID : `${interval}`, name: 'x', interval, isDefault });
+  ({ id: isDefault ? DEFAULT_ID : `${interval}`, interval, isDefault });
 
 describe('intervalKey', () => {
   it('folds absent / [0,100] / [1,100] to default', () => {
@@ -24,6 +24,13 @@ describe('intervalLabel', () => {
   it('labels default and bounded ranges', () => {
     expect(intervalLabel(null)).toBe('Default');
     expect(intervalLabel([1, 30])).toBe('1–30');
+  });
+});
+
+describe('rangeLabel', () => {
+  it('shows the implicit 1-100 span for the default range and the bounds otherwise', () => {
+    expect(rangeLabel(r(null, true))).toBe('Default (1-100)');
+    expect(rangeLabel(r([15, 60]))).toBe('15–60');
   });
 });
 
@@ -116,7 +123,7 @@ describe('round-trip (buildToRanges -> rangesToBuild)', () => {
 
 describe('dimmedByWeaponSet', () => {
   const mk = (entries: [number, number | undefined][]): PassiveRange => ({
-    id: 'r', name: 'x', interval: null, isDefault: true,
+    id: 'r', interval: null, isDefault: true,
     allocated: new Set(entries.map(([s]) => s)),
     entries: new Map(
       entries.filter(([, w]) => w !== undefined).map(([s, w]) => [s, { id: String(s), weapon_set: w }]),

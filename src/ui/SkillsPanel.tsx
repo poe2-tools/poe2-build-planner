@@ -6,6 +6,7 @@ import { GemIcon } from '../icons';
 import GemPicker from './GemPicker';
 import RangeBar from './RangeBar';
 import IntervalInputs from './IntervalInputs';
+import MarkupField from './MarkupField';
 
 const card: CSSProperties = {
   background: '#e8e9ee', color: '#1b1d24', border: '1px solid #c4c7d2', borderRadius: 6, padding: 8,
@@ -16,7 +17,6 @@ const grid: CSSProperties = {
   display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: 12, marginTop: 8,
 };
 const gemRow: CSSProperties = { display: 'flex', alignItems: 'center', gap: 8 };
-const textarea: CSSProperties = { width: '100%', minHeight: 40, resize: 'vertical', font: '12px sans-serif' };
 
 type Picker = { kind: 'skill' } | { kind: 'support'; setupIndex: number } | null;
 
@@ -52,20 +52,28 @@ export default function SkillsPanel() {
                 <button onClick={() => moveSkillSetup(i, 1)} disabled={i === skills.length - 1} title="Move down">↓</button>
                 <button onClick={() => removeSkillSetup(i)}>Remove</button>
               </div>
-              <textarea
-                placeholder="Notes…"
+              <MarkupField
                 value={setup.additional_text ?? ''}
-                onChange={(e) => setSkillText(i, e.target.value)}
-                style={textarea}
+                onChange={(v) => setSkillText(i, v)}
+                placeholder="Notes…"
+                title={`${nameOf(setup.id)} — notes`}
               />
               {(setup.support_skills ?? []).map((sup, j) => {
                 const supIcon = iconOf(sup.id);
                 return (
-                  <div key={j} style={{ ...gemRow, paddingLeft: 16 }}>
-                    {supIcon && <GemIcon iconDdsFile={supIcon} size={22} />}
-                    <span style={{ flex: 1 }}>{nameOf(sup.id)}</span>
-                    <IntervalInputs value={sup.level_interval} onChange={(iv) => setSupportInterval(i, j, iv)} />
-                    <button onClick={() => removeSupport(i, j)}>✕</button>
+                  <div key={j} style={{ display: 'flex', flexDirection: 'column', gap: 4, paddingLeft: 16 }}>
+                    <div style={gemRow}>
+                      {supIcon && <GemIcon iconDdsFile={supIcon} size={22} />}
+                      <span style={{ flex: 1 }}>{nameOf(sup.id)}</span>
+                      <IntervalInputs value={sup.level_interval} onChange={(iv) => setSupportInterval(i, j, iv)} />
+                      <button onClick={() => removeSupport(i, j)}>✕</button>
+                    </div>
+                    <MarkupField
+                      value={sup.additional_text ?? ''}
+                      onChange={(v) => setSkillText(i, v, j)}
+                      placeholder="Support note…"
+                      title={`${nameOf(sup.id)} — note`}
+                    />
                   </div>
                 );
               })}

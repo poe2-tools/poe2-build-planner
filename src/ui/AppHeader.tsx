@@ -21,7 +21,9 @@ const name: CSSProperties = {
 const tabRow: CSSProperties = { display: 'flex', alignItems: 'stretch', height: '100%', flex: 1 };
 const tabBase: CSSProperties = {
   background: 'none', border: 'none', color: '#9aa0b4', cursor: 'pointer', padding: '0 16px',
-  font: '13px sans-serif', borderBottom: '2px solid transparent',
+  // longhand (not the `font` shorthand) so merging in tabActive's fontWeight doesn't trip
+  // React's shorthand/non-shorthand conflict warning on tab switch.
+  fontSize: 13, fontFamily: 'sans-serif', borderBottom: '2px solid transparent',
 };
 const tabActive: CSSProperties = { color: '#d9c25a', fontWeight: 700, borderBottom: '2px solid #d9c25a' };
 
