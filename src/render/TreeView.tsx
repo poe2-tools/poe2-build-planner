@@ -251,7 +251,7 @@ export default function TreeView({ tree, skills, frames, allocated, startSkill, 
         onContextMenu={onContextMenu}
       />
       {tip && tipNode && (
-        <NodeTooltip node={tipNode} x={tip.x} y={tip.y} note={tipEntry?.additional_text} weaponSet={tipEntry?.weapon_set} />
+        <NodeTooltip node={tipNode} x={tip.x} y={tip.y} note={tipEntry?.additional_text} weaponSet={tipEntry?.weapon_set} allocated={allocated.has(tip.skill)} />
       )}
       {noteEditor && (
         <NodeNoteEditor

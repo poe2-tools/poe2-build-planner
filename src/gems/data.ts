@@ -6,6 +6,7 @@ interface RawGem {
   gem_type?: string;
   icon_dds_file?: string;
   recommended_supports?: string[];
+  tags?: string[];
 }
 
 /**
@@ -34,6 +35,7 @@ export function indexGems(json: unknown): Map<string, Gem> {
       gemType: raw.gem_type as GemType,
       iconDdsFile: raw.icon_dds_file,
       recommendedSupports: raw.recommended_supports,
+      isMeta: Array.isArray(raw.tags) && raw.tags.includes('meta'),
     });
   }
   return gems;

@@ -8,6 +8,7 @@ export interface Gem {
   gemType: GemType;
   iconDdsFile: string;
   recommendedSupports?: string[]; // metadata paths
+  isMeta: boolean; // tags include "meta": accepts other skill gems in its sockets (Cast on X, totems, …)
 }
 
 export interface GemQuery {

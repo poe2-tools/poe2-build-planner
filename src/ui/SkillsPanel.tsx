@@ -26,7 +26,9 @@ const supportBlock: CSSProperties = {
   borderLeft: '1px solid var(--line)',
 };
 
-type Picker = { kind: 'skill' } | { kind: 'support'; setupIndex: number } | null;
+// A support-socket picker carries a role: 'support' (normal) or 'skill' (a skill gem
+// socketed into a meta gem). Both append to the setup's support_skills.
+type Picker = { kind: 'skill' } | { kind: 'support'; setupIndex: number; role: 'support' | 'skill' } | null;
 
 export default function SkillsPanel() {
   const skillRanges = useStore((s) => s.skillRanges);
@@ -52,6 +54,7 @@ export default function SkillsPanel() {
       <div style={grid}>
         {skills.map((setup, i) => {
           const mainIcon = iconOf(setup.id);
+          const isMeta = gems ? gemById(gems, setup.id)?.isMeta ?? false : false;
           return (
             <div key={i} className="card" style={card}>
               <div style={gemRow}>
@@ -86,9 +89,19 @@ export default function SkillsPanel() {
                   </div>
                 );
               })}
-              <button onClick={() => setPicker({ kind: 'support', setupIndex: i })} style={{ alignSelf: 'flex-start' }}>
-                + Support
-              </button>
+              <div style={{ display: 'flex', gap: 6, alignSelf: 'flex-start' }}>
+                <button onClick={() => setPicker({ kind: 'support', setupIndex: i, role: 'support' })}>
+                  + Support
+                </button>
+                {isMeta && (
+                  <button
+                    onClick={() => setPicker({ kind: 'support', setupIndex: i, role: 'skill' })}
+                    title="Socket a skill gem into this meta gem"
+                  >
+                    + Skill gem
+                  </button>
+                )}
+              </div>
             </div>
           );
         })}
@@ -97,7 +110,7 @@ export default function SkillsPanel() {
 
       {picker && (
         <GemPicker
-          role={picker.kind === 'support' ? 'support' : 'skill'}
+          role={picker.kind === 'support' ? picker.role : 'skill'}
           onPick={(id) => {
             if (picker.kind === 'support') addSupport(picker.setupIndex, id);
             else addSkillSetup(id);

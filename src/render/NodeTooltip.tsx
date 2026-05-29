@@ -8,6 +8,8 @@ interface Props {
   y: number;
   note?: string;
   weaponSet?: number;
+  /** Allocated nodes can carry a note (added via right-click) — show the hint. */
+  allocated?: boolean;
 }
 
 const OFFSET = 16;
@@ -16,7 +18,7 @@ const WIDTH = 320;
 // Mirror the tree's edge colours: set 1 = blood, set 2 = jade.
 const SET_TINT: Record<number, string> = { 1: 'var(--blood-lit)', 2: 'var(--jade)' };
 
-export default function NodeTooltip({ node, x, y, note, weaponSet }: Props) {
+export default function NodeTooltip({ node, x, y, note, weaponSet, allocated }: Props) {
   // Flip to the cursor's left when the tooltip would overflow the right edge.
   const flipX = x + OFFSET + WIDTH > window.innerWidth;
   const tint = (weaponSet && SET_TINT[weaponSet]) || 'var(--gold-bright)';
@@ -67,6 +69,11 @@ export default function NodeTooltip({ node, x, y, note, weaponSet }: Props) {
       {note ? (
         <div style={{ marginTop: 6, paddingTop: 6, borderTop: '1px solid var(--line)', color: 'var(--gold)', fontStyle: 'italic' }}>
           <MarkupPreview text={note} />
+        </div>
+      ) : null}
+      {allocated && !note ? (
+        <div style={{ marginTop: 6, paddingTop: 6, borderTop: '1px solid var(--line)', color: 'var(--text-muted)', fontSize: 11, fontStyle: 'italic' }}>
+          Right-click to add note
         </div>
       ) : null}
     </div>

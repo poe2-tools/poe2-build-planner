@@ -21,13 +21,13 @@ const swatch: CSSProperties = {
   width: 16, height: 16, padding: 0, cursor: 'pointer', border: '1px solid var(--line)', borderRadius: 3,
 };
 const colourInput: CSSProperties = { width: 24, height: 18, padding: 1, border: '1px solid var(--line)', cursor: 'pointer' };
-const textarea: CSSProperties = { width: '100%', resize: 'vertical', fontFamily: 'var(--font-body)', fontSize: 12, boxSizing: 'border-box' };
+const textarea: CSSProperties = { width: '100%', resize: 'vertical', fontFamily: 'var(--font-body)', fontSize: 14, boxSizing: 'border-box' };
 const caption: CSSProperties = {
   fontFamily: 'var(--font-display)', fontSize: 10, textTransform: 'uppercase', letterSpacing: '0.14em', color: 'var(--text-muted)',
 };
 const preview: CSSProperties = {
   whiteSpace: 'pre-wrap', wordBreak: 'break-word', background: 'var(--field)', color: 'var(--text)',
-  border: '1px solid var(--line)', borderRadius: 3, padding: 6, minHeight: 18,
+  border: '1px solid var(--line)', borderRadius: 3, padding: 6, minHeight: 18, fontSize: 14,
 };
 
 // '#rrggbb' -> '<rgb(r, g, b)>' tag name (custom colour picker output).

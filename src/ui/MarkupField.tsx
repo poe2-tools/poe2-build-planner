@@ -58,8 +58,10 @@ export default function MarkupField({ value, onChange, placeholder, title }: Pro
       </div>
 
       {open && (
-        <div style={backdrop} onClick={() => setOpen(false)}>
-          <div style={modal} onClick={(e) => e.stopPropagation()}>
+        // Close only when the press itself starts on the backdrop — a drag-select that
+        // begins inside the modal and releases out here must NOT close it.
+        <div style={backdrop} onMouseDown={(e) => { if (e.target === e.currentTarget) setOpen(false); }}>
+          <div style={modal}>
             <div style={head}>
               <strong style={headTitle}>{title ?? 'Edit note'}</strong>
               <button type="button" onClick={() => setOpen(false)}>Done</button>

@@ -34,6 +34,15 @@ describe('indexGems', () => {
     expect(ice!.iconDdsFile).toBe('Art/2DArt/SkillIcons/4k/RangerIceShot.dds');
   });
 
+  it('flags meta gems via the "meta" tag, not by gem_type', () => {
+    // Cast on Freeze accepts socketed skill gems -> isMeta.
+    expect(gemById(gems, 'Metadata/Items/Gems/SkillGemCastOnFreeze')?.isMeta).toBe(true);
+    expect(gemById(gems, 'Metadata/Items/Gems/SkillGemSpellTotem')?.isMeta).toBe(true);
+    // A plain active skill and a support gem are not meta.
+    expect(gems.get('Metadata/Items/Gem/SkillGemIceShot')?.isMeta).toBe(false);
+    expect(searchGems(gems, { gemType: 'support' }).every((g) => g.isMeta === false)).toBe(true);
+  });
+
   it('excludes dev, placeholder and unique-shadow gems', () => {
     for (const g of gems.values()) {
       expect(g.displayName.startsWith('[DNT')).toBe(false);
