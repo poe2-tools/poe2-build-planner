@@ -13,10 +13,10 @@ function node(partial: Partial<TreeNode>): TreeNode {
 }
 
 describe('asset URLs', () => {
-  it('builds served paths under /tree/0.5.0', () => {
-    expect(treeDataUrl()).toBe('/tree/0.5.0/data.json');
-    expect(atlasJsonUrl('skills')).toBe('/tree/0.5.0/assets/skills.json');
-    expect(atlasImageUrl('frame')).toBe('/tree/0.5.0/assets/frame.webp');
+  it('builds served paths under /tree/0.5.2', () => {
+    expect(treeDataUrl()).toBe('/tree/0.5.2/data.json');
+    expect(atlasJsonUrl('skills')).toBe('/tree/0.5.2/assets/skills.json');
+    expect(atlasImageUrl('frame')).toBe('/tree/0.5.2/assets/frame.webp');
   });
 });
 
@@ -72,7 +72,7 @@ describe('loadTreeData', () => {
       nodes: { '7': { id: 'a', name: 'A', x: 0, y: 0, in: [], out: [] } },
     };
     const fakeFetch = async (url: string) => {
-      expect(url).toBe('/tree/0.5.0/data.json');
+      expect(url).toBe('/tree/0.5.2/data.json');
       return { ok: true, json: async () => raw } as Response;
     };
     const tree = await loadTreeData(fakeFetch as typeof fetch);
@@ -85,7 +85,7 @@ describe('loadAtlasFrames', () => {
   it('normalizes frames into a flat rect map', async () => {
     const atlas = { frames: { 'frame:PSSkillFrame': { frame: { x: 1, y: 2, w: 3, h: 4 } } }, meta: {} };
     const fakeFetch = async (url: string) => {
-      expect(url).toBe('/tree/0.5.0/assets/frame.json');
+      expect(url).toBe('/tree/0.5.2/assets/frame.json');
       return { ok: true, json: async () => atlas } as Response;
     };
     const frames = await loadAtlasFrames('frame', fakeFetch as typeof fetch);

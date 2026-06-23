@@ -3,7 +3,7 @@ import { indexTree, nodeKind, classIndexForAscendancy } from './data';
 
 // BASE_URL is '/' in dev/test and '/<repo>/' on a GitHub Pages project site; it always
 // ends in a slash, so the served tree paths stay correct under either base.
-const TREE_BASE = `${import.meta.env.BASE_URL}tree/0.5.0`;
+const TREE_BASE = `${import.meta.env.BASE_URL}tree/0.5.2`;
 
 export function treeDataUrl(): string {
   return `${TREE_BASE}/data.json`;
@@ -40,7 +40,7 @@ export function borderFrameKey(kind: NodeKind, state: VisualState): string | nul
           ? 'frame:PSSkillFrameHighlighted'
           : 'frame:PSSkillFrame';
     case 'notable':
-    case 'mastery': // no dedicated mastery frame in 0.5.0; reuse the notable frame
+    case 'mastery': // no dedicated mastery frame in 0.5.2; reuse the notable frame
       return `frame:NotableFrame${SUFFIX[state]}`;
     case 'keystone':
       return `frame:KeystoneFrame${SUFFIX[state]}`;

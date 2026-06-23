@@ -46,7 +46,7 @@ import { indexTree } from '../tree/data';
 import { parseBuild, serializeBuild } from '../buildfile';
 import { buildToRanges, rangesToBuild } from './ranges';
 
-const tree = indexTree(JSON.parse(readFileSync('Skill Trees/0.5.0/data.json', 'utf8')));
+const tree = indexTree(JSON.parse(readFileSync('Skill Trees/0.5.2/data.json', 'utf8')));
 const bag = (arr: unknown[]) => arr.map((x) => JSON.stringify(x)).sort();
 
 // Normalize the [0,100]/[1,100] -> default fold on the *original* so the round-trip

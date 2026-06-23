@@ -13,8 +13,8 @@ const thisFile = fileURLToPath(import.meta.url);
 if (process.argv[1] === thisFile) {
   const projectRoot = dirname(dirname(thisFile));
   copyTree(
-    join(projectRoot, 'Skill Trees', '0.5.0'),
-    join(projectRoot, 'public', 'tree', '0.5.0'),
+    join(projectRoot, 'Skill Trees', '0.5.2'),
+    join(projectRoot, 'public', 'tree', '0.5.2'),
   );
-  console.log('Copied tree data + assets to public/tree/0.5.0/');
+  console.log('Copied tree data + assets to public/tree/0.5.2/');
 }

@@ -5,7 +5,7 @@ import { parseBuild } from '../buildfile';
 import { useStore } from './store';
 import { DEFAULT_ID } from './ranges';
 
-const tree = indexTree(JSON.parse(readFileSync('Skill Trees/0.5.0/data.json', 'utf8')));
+const tree = indexTree(JSON.parse(readFileSync('Skill Trees/0.5.2/data.json', 'utf8')));
 const buildText = readFileSync('Builds/sample.build', 'utf8');
 const WARRIOR = classIndexForAscendancy(tree, 'Warrior1'); // the sample build's class
 const WITCH = classIndexForAscendancy(tree, 'Witch1');

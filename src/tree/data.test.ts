@@ -14,13 +14,13 @@ import type { TreeData } from './types';
 let tree: TreeData;
 
 beforeAll(() => {
-  const raw = JSON.parse(readFileSync('Skill Trees/0.5.0/data.json', 'utf8'));
+  const raw = JSON.parse(readFileSync('Skill Trees/0.5.2/data.json', 'utf8'));
   tree = indexTree(raw);
 });
 
 describe('indexTree', () => {
   it('indexes all nodes and classes', () => {
-    expect(tree.nodesBySkill.size).toBe(5102);
+    expect(tree.nodesBySkill.size).toBe(5151);
     expect(tree.classes.length).toBe(12);
     expect(tree.classStartNodes.length).toBe(6);
   });
@@ -110,7 +110,7 @@ describe('render sets', () => {
     expect(main.has(tree.nodesById.get('ranger596')!.skill)).toBe(true);
   });
   it('mainSkills has the expected size', () => {
-    expect(tree.mainSkills.length).toBe(4053); // 4058 minus the 5 SinisterJewelSockets
+    expect(tree.mainSkills.length).toBe(4110); // 4115 minus the 5 SinisterJewelSockets
   });
   it('ascendancySkills groups active ascendancies and includes their start node', () => {
     expect(tree.ascendancySkills.size).toBe(22);
@@ -118,7 +118,7 @@ describe('render sets', () => {
     expect(tree.ascendancySkills.get('Ranger1')).toContain(46990); // AscendancyRanger1Start
   });
   it('groups maps group ids to orbit centres', () => {
-    expect(tree.groups.size).toBe(1572);
+    expect(tree.groups.size).toBe(1621);
     const g3 = tree.groups.get(3)!;
     expect(g3.x).toBeCloseTo(-22257, 0);
     expect(g3.y).toBeCloseTo(-6513.5, 1);

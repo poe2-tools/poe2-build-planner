@@ -93,8 +93,8 @@ The tree has **no auto-fetch script**; it's pinned to a downloaded official expo
 1. Download the latest passive-tree export from GGG's
    [developer data exports](https://www.pathofexile.com/developer/docs/data).
 2. Place it under a new version folder, e.g. `Skill Trees/0.6.0/` containing `data.json` and
-   the `assets/` atlas directory (mirror the existing `Skill Trees/0.5.0/` layout).
-3. Update the pinned version string `0.5.0` → the new version in:
+   the `assets/` atlas directory (mirror the existing `Skill Trees/0.5.2/` layout).
+3. Update the pinned version string `0.5.2` → the new version in:
    - `scripts/copy-tree.mjs` (source + dest paths)
    - `src/tree/source.ts` (`TREE_BASE`, the runtime served path)
    - the tests that read it directly: `src/tree/data.test.ts`, `src/tree/source.test.ts`,

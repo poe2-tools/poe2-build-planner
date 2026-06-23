@@ -17,7 +17,7 @@ afterEach(() => {
 describe('copyTree', () => {
   it('copies data.json and the assets directory into the destination', () => {
     const src = tmp('poe2-src-');
-    const dest = join(tmp('poe2-dest-'), 'tree', '0.5.0');
+    const dest = join(tmp('poe2-dest-'), 'tree', '0.5.2');
     writeFileSync(join(src, 'data.json'), '{"tree":"Default"}');
     mkdirSync(join(src, 'assets'));
     writeFileSync(join(src, 'assets', 'skills.json'), '{"frames":{}}');
